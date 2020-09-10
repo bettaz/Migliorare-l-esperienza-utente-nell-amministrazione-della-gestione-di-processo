@@ -20,6 +20,7 @@ Nelle giornate di lavoro in presenza e durante alcune riunioni ho avuto modo di 
 %**************************************************************
 \section{Il reparto ricerca e sviluppo}
 \subsection{Di cosa si occupa}
+\label{subsec:occupazioneRnd}
 Durante l'attività di stage, sono stato inserito nel reparto \acrshort{rnd}\glsfirstoccur che è organizzato come team di quattro persone. Si occupa di effettuare ricerca sulle tecnologie del domani di Siav. Tramite la collaborazione con i clienti e con le altre sezioni della \textit{software house}, costruiscono prototipi di nuovi prodotti e funzionalità di cui l'azienda vuole studiare utilità e fattibilità.
 
 Ogni componente ha competenze e \textit{background} differenziati. In questo modo il team possiede dei riferimenti specializzati su molti fronti pur spaziando su molteplici settori tecnologici: dal tracciamento e rilevazione in ambito Process Mining alla predizione tramite \acrlong{ml}\glsfirstoccur passando per la ottimizzazione di infrastrutture software e \textit{cloud} per le piattaforme già esistenti.
@@ -73,16 +74,29 @@ Per poter affrontare al meglio tutte le richieste effettuate al reparto, vengono
 \subsection{Perché sperimentare tramite l'attività di stage}
 Una delle filosofie su cui si basa il reparto ricerca e sviluppo, è quella della sperimentazione; negli anni, ha sempre collaborato con gli atenei per effettuare attività di stage in azienda. L'approccio di uno stagista che si avvicina per la prima volta ad un problema aziendale, è un prezioso punto di vista su problemi che il reparto magari ha già affrontato. Un suo valore risiede nel fatto che non è inserito nel contesto e perciò riuscirà sempre a cogliere degli aspetti sui quali non erano state fatte valutazioni. Inoltre, lo stagista ha la volontà, per natura dell'obiettivo che sta perseguendo, di conoscere e imparare, ovviamente, scegliendo delle strade per risolvere i problemi talvolta giuste, talvolta sbagliate. Durante il lavoro in Siav, tutte queste scelte tecniche effettuate vanno giustificate all'interno del report giornaliero per dare solidità e coerenza alle scelte che dovrà affrontare quando il software dovrà andare in produzione. Un esempio di come venga applicata questa filosofia è "Bipod".
 \subsection{Bipod}
-Bipod è il software di Process Mining sviluppato da Siav. ogni funzionalità in esso è stata implementata dal reparto tramite la collaborazione con uno o più studenti. Esso permette, a partire dai dati aziendali relativi a uno o più processi, di ricostruire dei grafi di processo e di effettuare calcoli sul valore degli indici di processo che l'utente desidera. Questo tramite la formulazione di \acrshort{kpi}\glsfirstoccur Una volta inserite delle soglie, permette di monitorare lo stato di tali indici in formato grafico. 
+Bipod è il software di Process Mining sviluppato da Siav. ogni funzionalità in esso è stata implementata dal reparto tramite la collaborazione con uno o più studenti. Esso permette, a partire dai dati aziendali relativi a uno o più processi, di ricostruire dei grafi di processo e di effettuare calcoli sul valore degli indici di processo che l'utente desidera. Questo tramite la formulazione di \acrshort{kpi}\glsfirstoccur Una volta inserite delle soglie, permette di monitorare lo stato di tali indici in formato grafico.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{immagini/Bipod docker scheme.png}
+    \caption{La struttura del sistema Bipod}
+    \label{fig:bipodMessages}
+\end{figure}
 
 \subsubsection{Tecnologie coinvolte}
 \'E un software strutturato costituito da 5 partizioni, ognuna con determinati compiti e funzioni. Coinvolge infatti diverse tecnologie in base alle prerogative di ogni parte:
-\paragraph{Docker} Orchestratore di \textit{container}, permette l'esecuzione indipendente di diversi servizi sulla stessa macchina eseguendoli come macchine virtuali indipendenti che comunicano tramite una rete.
-\paragraph{Angular} Framework di sviluppo per applicazioni web basato sul linguaggio TypeScript che organizza il codice secondo un paradigma di progettazione che coinvolge \textit{components} e \textit{services}. I primi, come suggerisce il nome, sono dei componenti grafici a loro volta composti da un \textit{template} di vista e un modulo che ne definisce il comportamento; i \textit{services} sono invece dei moduli che offrono un servizio ( per esempio dati, proxy remoto o calcolo).
-\paragraph{Python} \'E un linguaggio di programmazione estremamente semplice ed intuitivo. Su queste caratteristiche è stata infatti costruita la sua flessibilità. In Bipod è impiegato per lanciare routine periodiche di monitoring e rilevazione dei processi.
-\paragraph{Micronaut} \textit{Framework} di sviluppo per \acrshort{jvm}, permette di sviluppare e testare velocemente microservizi e \textit{serverless applications}. Viene impiegato in Bipod per offrire un servizio di gestione degli indici posti in rilevazione e per registrare uno storico dei valori degli stessi.
-\paragraph{PostreSQL} Servizio di \textit{database} relazionale \textit{open source} per l'archiviazione ed interrogazione su grandi moli di dati
-\paragraph{RabbitMQ} Servizio di messaggistica che regola la comunicazione tra le parti, necessario per la gestione dei flussi all'interno di un architettura a micro-servizi
 
+\paragraph{Docker} Orchestratore di \textit{container}, permette l'esecuzione indipendente di diversi servizi sulla stessa macchina eseguendoli come macchine virtuali indipendenti che comunicano tramite una rete. Tramite la virtualizzazione è possibile gestire anche diverse istanze dello stesso \textit{container} contemporaneamente
+
+\paragraph{Nginx} \'E un \textit{light-weight} web server che permette la gestione dell'invio di pagine web ai client che le richiedono.
+
+\paragraph{Angular} Framework di sviluppo per applicazioni web basato sul linguaggio TypeScript che organizza il codice secondo un paradigma di progettazione che coinvolge \textit{components} e \textit{services}. I primi, come suggerisce il nome, sono dei componenti grafici a loro volta composti da un \textit{template} di vista e un modulo che ne definisce il comportamento; i \textit{services} sono invece dei moduli che offrono un servizio ( per esempio dati, proxy remoto o calcolo).In Bipod viene servito da Nginx.
+
+\paragraph{Python} \'E un linguaggio di programmazione estremamente semplice ed intuitivo. Su queste caratteristiche è stata infatti costruita la sua flessibilità. In Bipod è impiegato per lanciare routine periodiche di monitoring del caricodel sistema e rilevazione dei processi all'interno del \textit{container Scheduler}.
+
+\paragraph{Micronaut} \textit{Framework} di sviluppo per \acrshort{jvm}, permette di sviluppare e testare velocemente microservizi e \textit{serverless applications}. Viene impiegato in Bipod per offrire un servizio di gestione degli indici posti in rilevazione e per registrare uno storico dei valori degli stessi.
+
+\paragraph{PostreSQL} Servizio di \textit{database} relazionale \textit{open source} per l'archiviazione ed interrogazione su grandi moli di dati
+
+\paragraph{RabbitMQ} Servizio di messaggistica che regola la comunicazione tra le parti, necessario per la gestione dei flussi all'interno di un architettura a micro-servizi
 
 %**************************************************************
