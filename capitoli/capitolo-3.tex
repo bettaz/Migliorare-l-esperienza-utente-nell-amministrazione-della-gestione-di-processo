@@ -3,66 +3,385 @@
 % !TEX root = ../tesi.tex
 
 %**************************************************************
-\chapter{Una piattaforma solida}
+\chapter{Svolgimento del progetto}
 \label{cap:modalita-svolgimento}
 %**************************************************************
 \section{Metodo di sviluppo}
 %**************************************************************
 \subsection{L'uso di cicli di sviluppo}
-Spiega come sono stati utilizzati i molteplici cicli di sviluppo
+Il progetto di stage iniziale prevedeva un ciclo unico di sviluppo. Esso comprendeva delle attività di formazione individuale seguite dalle attività di analisi, progettazione, implementazione e verifica.
+Rispetto al progetto iniziale di restaurare il prototipo che era stato sviluppato dal \textit{team} per testare le funzionalità \textit{back-end}, ho proposto di effettuare un approfondita analisi incentrata sull'esperienza utente. Questo perché avevo notato la completa assenza di strutturazione, la presenza di codice non utile allo scopo della piattaforma e povero di separazione. Erano caratteristiche comprensibili derivanti dalla sua natura prototipale ma non accettabili in un prodotto manutenibile e incrementabile.
+Durante l'attività di analisi, il responsabile, si è reso subito conto che la profondità con cui la stavo effettuando avrebbe potuto introdurre diverse insidie comportanti la responsabilità di prendere delle scelte importanti per il destino della piattaforma.
+
+In accordo con il tutor, abbiamo deciso di sezionare il progetto in diversi cicli di sviluppo, uno per funzionalità. Questi hanno infatti introdotto un numero superiore di momenti di verifica permettendo di lavorare con maggiore efficacia, puntando sempre alla giusta meta.
+Per ognuna delle funzionalità individuate, assieme al responsabile, abbiamo programmato un ciclo di sviluppo che comprendeva, oltre che le attività previste per il ciclo iniziale, quella di raffinamento dei requisiti già individuati.
 
 %**************************************************************
 \subsection{Diagrammi e formalizzazione}
-Spiega cosa è stato modellato dagli use case e dall'analisi dei requisiti e come è stato fatto
+\label{ssec:diagrams}
+Per eliminare l'insorgere di ambiguità, ho deciso di effettuare l'attività di analisi con estrema minuziosità e completezza.
+Sono partito dalla gestione degli accessi alla piattaforma, ho affrontato la visualizzazione dei grafi di processo, passando poi alla visualizzazione dei \acrshort{kpi}, al loro editing e infine alla gestione delle \textit{dashboard}.
+Per donare completezza al documento prodotto dall'attività, ho preferito schematizzare, tramite i diagrammi dei casi d'uso, tutti gli scenari che l'utente può affrontare all'interno della piattaforma.
 
-%**************************************************************
-\subsection{POC}
-Spiega che POC sono stati creati, quale era il loro scopo e come sono stati poi trasformati in prodotto.
-
+I casi d'uso, assieme ai rispettivi diagrammi, costituiscono l'espressione più formale e precisa possibile dell'\acrshort{ux} in quanto esprimono tutte le interazioni che l'utente ha la possibilità di fare in base alle sue necessità.
 %**************************************************************
 \subsection{Confronto continuo}
-Spiega come il confronto continuo su tutto il materiale prodotto abbia influenzato, sopratutto nelle prime settimane, l'andamento dello stage e la solidità dell'idea del prodotto finale che si consolidava.
+La chiave di successo che ha maggiormente contribuito al raggiungimento degli obiettivi, è stata la frequenza di verifica della progressione e della direzione intrapresa dal progetto.
+
+Durante l'attività di analisi, il confronto continuo con responsabile e tutor, ha permesso di individuare i requisiti con precisione, facendo subito emergere lacune nella mia preparazione sull'argomento \textit{process mining}.
+
+Per quanto concerne il \textit{design}, verificare periodicamente le modalità di interazione ha dato al responsabile l'opportunità di toccare con mano le mie idee a livello di \acrshort{ux}.
+
+Durante l'implementazione, la collaborazione con il tutor tramite frequenti confronti, ha permesso che le esigenze che avevo espresso a livello \textit{front-end}, trovassero riscontro nella partizione \textit{back-end}.
+
+Fondamentale è stata anche la presenza di tutti durante questi momenti di verifica: il tutor, analisi alla mano, verificava la correttezza, il responsabile forniva un parere esterno e perciò più critico.
+Inoltre, nel caso di dubbi, le proposte venivano vagliate più velocemente discutendo la strada da percorrere e registrando le decisioni in un documento condiviso.
+
+%**************************************************************
+\subsection{\acrlong{poc}}
+Durante la progettazione dell'interfaccia, il responsabile, mi ha chiesto di realizzare dei \textit{mock-up} della stessa per verificarne prontamente la correttezza.
+Tutor e responsabile, mi hanno lasciato la libertà di scegliere tra due software di progettazione: Balsamiq Wireframe e Figma. Entrambi sono valide alternative ma per il secondo sono state sviluppate delle librerie che includono le componenti Material Design.
+Ho cominciato prima a formarmi sul funzionamento di Figma. Dopo aver fatto qualche prova, ho prodotto il primo \textit{mock-up}. Responsabile e tutor si sono accorti che, visto che ormai avevo preso una certa dimestichezza con Angular e Material Design durante la formazione iniziale, il tempo impiegato per creare \textit{mock-up} era troppo alto rispetto alla velocità di realizzazione di \acrshort{poc}\glsfirstoccur che dimostrassero ciò che era stato trattato nell'analisi dei requisiti. Inoltre, tramite la corretta strutturazione del codice, le modifiche risultavano estremamente veloci da fare tramite interventi sui \textit{template} dei \textit{component}.
+Queste due constatazioni hanno portato alla scelta di evitare la progettazione in modalità grafica quando possibile a favore di una più completa dimostrazione dell'usabilità tramite la realizzazione di \acrlong{poc} per ogni funzionalità.
+
+Ho cominciato perciò con la definizione del \textit{service} per la comunicazione con il \textit{back-end}. Dopodiché, ne ho effettuato un \textit{mock-up} in attesa degli interventi di correzione che andavano effettuati all'interno della partizione \textit{log-uploader}.
+
+Tale \textit{mock-up} è stato poi impiegato durante la progettazione di tutte le rimanenti interfacce.
+\newpage
 %**************************************************************
 \subsection{Documentazione ampia e prolissa}
-Spiega come, per evitare dubbi di interpretazione nei punti più difficili o nelle partizioni più ingannevoli, sia stata sfruttata la documentazione sia a livello di analisi e progettazione, sia a livello di codice
+Durante tutte le attività svolte per il progetto, ho cercato di documentare più dettagli possibili.
+In particolare:
+\begin{itemize}
+    \item I casi d'uso riportano sia lo scenario, sia il dettaglio con precondizioni e postcondizioni;
+    \item I requisiti individuati sono categorizzati e dettagliati;
+    \item Nella documentazione tecnica di progettazione, ho inserito diverse immagini illustranti il funzionamento desiderato della piattaforma, lo scopo della funzionalità descritta e la motivazione di eventuali scelte tecniche intraprese;
+    \item Il codice sorgente da me scritto, utilizza nomi estremamente evocativi; \item Ho ampiamente documentato ogni modulo, funzione, modello, servizio o classe, tramite lo standard \gls{jsdoc}\glsfirstoccur non lasciando alcuna porzione scoperta.
+\end{itemize}
 
-
+Nella strategia incrementale che Siav impiega per Bipod, questo è necessario per permettere, a chi effettuerà altri incrementi alla piattaforma, di comprendere velocemente la strutturazione attuale delle componenti e di accelerare perciò l'implementazione degli incrementi stessi.
+\vspace{45px}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{immagini/Not-documented-not-done.png}
+    \caption{Non documentato = non fatto - Fonte: \href{https://cpahalltalk.com/audit-documentation/}{Audit Documentation - CPA Hall Talk}}
+    \label{fig:notDone}
+\end{figure}
+\newpage
 %**************************************************************
 \section{Priorità e criticità}
-
+%**************************************************************
 \subsection{Tecnologie software sfruttate}
-Spiega quali sono le tecnologie che ho impiegato indicandone i punti di forza e utilità oltre a quelli critici
+In questa sezione espongo come ho sfruttato alcune tecnologie indicate in \S\ref{ssec:techEnvolved} assieme a quelle introdotte dall'attività di stage e agli strumenti indicati in \S\ref{ssec:usedTools}.
+%**************************************************************
+\subsubsection{Docker}
+\label{ssec:docker}
+Questo strumento si basa su \textit{file} di configurazione che permettono la virtualizzazione di vari servizi. Con estrema flessibilità, modificando tali \textit{file}, è possibile modificare la topologia della rete che collega i servizi e le risorse associate agli stessi. All'inizio dell'attività di stage mi è stato fornito un \textit{laptop} per accedere alla rete interna e lavorare così sui \textit{repository} condivisi.
+
+Il reparto, tramite l'intervento dell'amministratore, effettua \acrshort{ci} tramite il \textit{deploy} manuale su un server virtuale interno all'azienda. Per crearmi un ambiente di pseudo integrazione continua, ho preferito virtualizzare l'ambiente di produzione in locale non esistendo alcun tipo di test di integrazione predisposto per il lato back-end. Dopo pochi giorni, è diventato inutilizzabile a causa di scarsità di memoria volatile. Dopo aver identificato il problema nella virtualizzazione dei servizi, ho individuato quali erano quelli essenziali per l'esecuzione della partizione \textit{front-end} e ho scartato dal file di configurazione di Docker, quelli che non venivano sfruttati.
+La velocità con cui ho risolto un problema che sembrava molto difficile da risolvere, mi ha fatto capire quanto Docker sia facilmente adattabile ad ogni situazione.
+%**************************************************************
+\subsubsection{Angular}
+La potenzialità maggiore derivata dall'impiego di questo \textit{framework} risiede, anche in questo caso, nella flessibilità. Questo perché esso è orientato all'impiego di modelli di dato e di vista: premette perciò di rappresentare facilmente informazioni di diversa origine in maniera dinamica semplicemente cambiando template oppure cambiandone la classe di comportamento associata.
+Inoltre va a braccetto con Material Design essendo entrambi sviluppati e manutenuti da Google. L'integrazione della libreria grafica Material mi è risultata estremamente facile ed intuitiva, e perciò lo è anche per i programmatori meno esperti.
+
+Un'altra funzionalità che ho largamente sfruttato è la creazione di file \acrshort{xml} per l'internalizzazione: tramite il comando \verb|ng xi18n|, Angular genera un file nel formato specificato (\acrshort{xliff}\glsfirstoccur 1.2 se non specificato). Questa operazione si basa sulla marchiatura degli elementi localizzabili tramite un apposito attributo (nel caso di codice HTML) o annotazione (nel sorgente TypeScript). L'\textit{output} è un file di lingua \emph{sorgente}. Va generato ogniqualvolta vengano introdotti nuovi elementi testuali specifici della lingua di sviluppo o che comportano utilizzo di variabili che vanno localizzate come importi in valuta o date (di default vengono interpretati come inglese americano) all'interno delle interfacce o del codice. Costruendo traduzioni sulla base di quel \textit{file}, è possibile effettuare una \textit{build} per la località di destinazione passandolo come parametro.
+\newpage
+%**************************************************************
+\subsubsection{NodeJS}
+"Node.js® è un \textit{runtime} JavaScript costruito sul motore JavaScript V8 di Chrome"\footcite{site:nodeJS}. Nel progetto è stato utilizzato per eseguire in locale il servizio \textit{front-end}. Tramite il suo file di configurazione \emph{package.json}, ho definito diverse versioni di \textit{build} che vengono eseguite automaticamente per generare le versioni internazionalizzate della piattaforma.
+%**************************************************************
+\subsubsection{Nginx}
+Come ogni servizio degno di nota, anche Nginx sfrutta un \textit{file} di configurazione per servire le pagine web. Le modifiche che ho effettuato a tale file, sono atte a servire le versioni internazionalizzate tramite prefissi di indirizzo.
+%**************************************************************
+\subsubsection{Micronaut}
+Tramite Micronaut, ho effettuato delle modifiche al codice \textit{back-end} per correggere il mancato rispetto dei principi \acrshort{rest} e collaborare con il tutor all'introduzione delle nuove funzionalità \textit{front-end}. Avevo avuto poca esperienza con le annotazioni nel linguaggio Java ma, documentazione e diversi esempi alla mano, sono riuscito ad alterare le API correggendole dove necessario.
+
+Il \textit{framework} Micronaut è molto vasto per modalità di impiego e opzioni disponibili e ciò si riflette sulla dimensione della documentazione di riferimento.
+Una critica che mi permetto di fare è che spesso le informazioni mi sono risultate frammentarie all'interno delle varie sezioni e per recuperare la corretta e completa annotazione utile alla creazione di una \acrshort{api} non basilare, ho dovuto ricorrere alla ricerca di esempi di impiego da fonti esterne.
+\vspace{35pt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{immagini/how_api_works.png}
+    \caption{Come funzionano le \acrshort{api} - Fonte: \href{https://www.facebook.com/eryutech/photos/application-programming-interface-apihow-it-works-eryutech/1125855790904330/}{ERYUTech}}
+    \label{fig:howApiWorks}
+\end{figure}
+\newpage
+%**************************************************************
+\subsubsection{PoEdit}
+Dopo essermi documentato attentamente sul formato \acrshort{xliff}, ho dovuto creare un file di traduzione per mettere in atto ciò che avevo imparato. L'idea iniziale proposta dal tutor era quella di modificare manualmente il file \acrshort{xliff} originale introducendo la traduzione nella lingua \textit{target}. Non ritenendo utile procedere in questa maniera, ho subito pensato che doveva per forza esistere un software che permettesse agevolmente di effettuare questa operazione. La risposta è arrivata consultando \gls{discover}\glsfirstoccur dove ho trovato PoEdit.
+Questo \textit{tool} è risultato molto efficace nella creazione di traduzione di \textit{file} in formato \emph{gettext} e \acrshort{xliff}. Utilizzabile anche in connessione al \textit{localization management service} Crowdin. Permette di:
+\begin{itemize}
+    \item Selezionare una lingua di destinazione;
+    \item Passare velocemente da una voce all'altra inserendone la traduzione;
+    \item Verificare automaticamente la presenza parziale di tutte le traduzioni;
+    \item Verificare automaticamente la coerenza delle traduzioni inserite controllandone la formattazione;
+    \item Effettuare le operazioni descritte sopra su un file di \textit{localization} condiviso su Crowdin.
+\end{itemize}
+
 %**************************************************************
 \subsection{Strumenti di collaborazione}
+%**************************************************************
 \subsubsection{Comunicazione}
-Indica quali sono gli strumenti che sono in uso in Siav per la comunicazione e come sono stati sfruttati, indicandone anche pregi e difetti ed eventuali mancanze
+Nonostante essa fosse frequente, la comunicazione durante lo stage, non è stata la più semplice delle attività. Sono stati coinvolti troppi strumenti senza mantenere una scelta condivisa. Ho però potuto notare pregi e difetti di tutti quelli che abbiamo impiegato.
+\paragraph{Telegram} Lo abbiamo sfruttato principalmente per l'organizzazione degli appuntamenti collettivi tramite la creazione di un gruppo condiviso. \'E stato utile anche ove c'era la necessità di effettuare chiamate fra terminali di diverso tipo (ad esempio da PC a telefono).
+Fra le varie caratteristiche, Telegram permette di condividere, con i propri contatti, files di grandi dimensioni\footcite{site:telegram}, funzionalità che in reparto abbiamo ampiamente apprezzato.
+%**************************************************************
+\paragraph{Zoom} Il \textit{client} di videoconferenze americano ha avuto molto successo durante quest'anno grazie al largo impiego in ambito aziendale e scolastico rientrando nei software indispensabili di molte persone\footcite{site:zoomBlog}. Il pregio che ho potuto rilevare è la bassa sete di banda e di caratteristiche \textit{hardware}. Degne di nota anche la funzione di controllo remoto e la vastità delle opzioni configurabili.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\columnwidth]{immagini/vc_struggle.jpg}
+    \caption{\textit{Video call struggle} - Fonte: \href{https://www.commsbusiness.co.uk/news/9-out-of-10-people-struggle-when-connecting-to-a-video-conference-call/}{9 out of 10 people struggle when connecting to a video conference call - Comms Business}}
+    \label{fig:vcStruggle}
+\end{figure}
+Non mancano, però evidenti difetti che ho potuto rilevare. Per primo, quello trascurabile dell'interfaccia grafica, poco gradevole e rievocante software datati. Il secondo, un'esperienza utente da dimenticare\footnote{Versione 5.2 su Kubuntu 20.04}:
+\begin{itemize}
+    \item Accesso alle riunioni macchinoso;
+    \item Comportamenti indesiderati frequenti come ingresso in modalità \textit{full-screen} automatico;
+    \item Disorientamento causato dalla operatività su molteplici finestre;
+    \item Strumenti che passano dall'essere introvabili all'invadenza nella modalità \textit{full-screen};
+    \item Passaggio fra account Google diversi estremamente difficile e dedicato solo a esperti informatici;
+    \item Limite tempo massimo nelle riunioni nella versione free;
+    \item Destinazione delle chiamate private non omogenea: chiamando un contatto potrebbe avviarsi la suoneria su un terminale o sull'altro non considerando lo stato di blocco di uno di quelli.
+\end{itemize}
+Per le scarse caratteristiche tecniche dell'hardware a mia disposizione, lo prediligo in molti casi alla concorrenza ma non esiterei a scartarlo qualora impiegassi un \textit{device} diverso.
+%**************************************************************
+\paragraph{MS Teams}
+Il \textit{tool} prodotto da Microsoft è nel complesso un buon prodotto: risponde infatti alla maggior parte delle esigenze di comunicazione e condivisione che un gruppo può avere. Unica debolezza riscontrata è che la collaborazione fra \textit{team} di diverse organizzazioni non è agevolata, limitando l'operatività.
+Si integra perfettamente nell'ambiente \gls{office} ed è disponibile per molteplici sistemi operativi.
+%**************************************************************
 \subsubsection{Documentazione}
-Indica quali sono gli strumenti che sono in uso in Siav per la documentazione e come sono stati sfruttati, indicandone anche pregi e difetti ed eventuali mancanze
+%**************************************************************
+\paragraph{\LaTeX}
+Per l'analisi dei requisiti, ho deciso di effettuare la stesura in \LaTeX.
+Dal mio punto di vista, risulta più comodo perché, come ad esempio per il linguaggio \gls{markdown}\glsfirstoccur, è più facile da versionare all'interno di un \textit{repository} e da monitorare tramite \gls{diff}\glsfirstoccur.
+%**************************************************************
+\paragraph{Google Docs}
+Il tool offerto da Google permette di creare documenti condivisi in maniera semplice e veloce. Possiede le funzionalità essenziali dei classici \textit{tool} di \textit{office automation}, sufficienti allo scopo. Le funzionalità più interessanti di questo strumento sono lo \textit{storaging} su Google Drive e il registro delle modifiche che tiene traccia di quali editori hanno effettuato determinate modifiche nel tempo.
+%**************************************************************
+\paragraph{Evernote}
+Il \textit{tool} (introdotto in \S\ref{ssec:usedTools}) fornisce il vantaggio di condividere velocemente appunti con i colleghi. Molto utile anche la funzionalità di allegazione di documenti pdf alle note, utile quando c'è bisogno di fare delle annotazioni con riferimenti ad uno specifico documento locale. Nell'utilizzo collaborativo, risulta essere un disastro: non è infatti possibile usufruire contemporaneamente dello stesso documento in modalità di modifica. Inoltre, per ragioni non ancora note, durante un accesso accidentalmente sincronizzato, il responsabile ha perso tutti i contenuti grafici allegati alla nota che stava elaborando; comportamento decisamente non desiderabile, anche perché a detta sua, recidivo.
+
+Nonostante io sia stato un utilizzatore dal momento del lancio fino all'arrivo della Google Suite, sostengo che Evernote è in difficoltà per funzionalità e stabilità a competere con i concorrenti.
+\vspace{20pt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{immagini/outdated.jpeg}
+    \caption{\textit{Obsolete technologies vs modern technologies} - Fonte: \href{https://alfapeople.com/outdated-processes-damage-business-part-1-obsolete-technologies/}{How Outdated Processes Damage Your Business - Alpha People}}
+    \label{fig:oldTech}
+\end{figure}
+\newpage
 \subsubsection{Implementazione}
-Indica quali sono gli strumenti che sono in uso in Siav per l'implementazione e come sono stati sfruttati, indicandone anche pregi e difetti ed eventuali mancanze
+%**************************************************************
+\paragraph{VS Code}
+L'\acrshort{ide} marchiato Microsoft mi ricorda più degli editor di testo con funzionalità avanzate per interfaccia grafica rispetto ad un ambiente di sviluppo come lo intendo in un accezione più moderna. Ciononostante, tramite l'aggiunta di \textit{plug-in}, riesce a fornire un buon servizio con un consumo estremamente basso di risorse hardware.
+Il reparto lo utilizza per lo sviluppo in Angular: personalmente non mi è piaciuta la meccanica di \textit{code completion} rispetto all'offerta dei \textit{competitor} o del fratello maggiore Microsoft Visual Studio\footnote{Personale esperienza con la versione 2011}.
+%**************************************************************
+\paragraph{IntelliJ IDEA}
+Tramite lo strumento sviluppato da JetBrains, ho gestito tutto il processo di \textit{build} delle componenti Micronaut nel \textit{back-end} della piattaforma tramite l'agilissima configurazione dei task tramite \gls{gradle}. Il \textit{tool} è completo, anche rispetto ad altri \textit{framework} e linguaggi e il completamento del codice è gradevolmente farcito con un accesso rapido alla documentazione in fase di consultazione delle opzioni disponibili. Il terminale è ben integrato con una certa autonomia nel lancio dei comandi di build, test, esecuzione e debug. In accessibilità, qualche comportamento da segnalare: alcune \textit{shortcut} non corrispondono al comportamento atteso per convenzione di sistema operativo; è sufficiente però costruirsi una propria configurazione per ovviare a questo problema. Difetto evidente invece è l'utilizzo di risorse (comprensibile vista la gamma di funzionalità offerte) che lo rende difficile da utilizzare con i \textit{device} più datati.
+%**************************************************************
+\paragraph{WebStorm}
+Specializzato in sviluppo web, WebStorm si propone come la versione \textit{light-weight} di IntelliJ IDEA. Posso affermare con sicurezza che è più leggero e snello nell'uso ma allo stesso tempo che non lo è sufficientemente per operare con i dispositivi meno recenti. La \textit{code completion} lavora molto bene sul codice Typescript del \textit{framework} Angular ma, non appena le risorse hardware cominciano a scarseggiare, diventa inutilizzabile.
+
+Nel complesso, i programmi marchiati JetBrains sono molto potenti e di conseguenza richiedono molte risorse.
+%**************************************************************
+\paragraph{GitLab}
+Tramite questo software di controllo di versione, abbiamo inserito il codice all'interno di un \textit{branch} dedicato al mio stage. Da esso, ho creato personalmente diverse ramificazioni per gestire le varie funzionalità in maniera separata, andandole poi ad integrare tramite l'operazione di \textit{merge}. Le funzionalità sono state testate tramite l'ambiente di sviluppo da me riprodotto (spiegato in \S\ref{ssec:docker}) perciò, l'integrazione nel ramo principale è risultata indolore.
+%**************************************************************
 \subsubsection{Verifica}
-Indica quali sono gli strumenti che sono in uso in Siav per la verifica e come sono stati sfruttati, indicandone anche pregi e difetti ed eventuali mancanze
+%**************************************************************
+\paragraph{JUnit}
+Tramite questo \textit{framework} è possibile testare anche il codice Java. Nel caso di Bipod, viene usato per controllare le \acrshort{api} implementate in Micronaut. Ogni modifica effettuata al codice \textit{back-end} ha comportato l'aggiornamento del corrispettivo codice di test includendo la verifica delle nuove funzionalità introdotte.
+\newpage
+%**************************************************************
+\paragraph{Protractor}
+Durante la formazione iniziale riguardo alle tecnologie, ho effettuato delle prove con il \textit{framework} di \textit{testing} Protractor. Il suo funzionamento è estremamente interessante: permette di definire dei veri e propri casi d'uso indicando l'azione utente che si desidera modellare e il comportamento atteso tramite delle asserzioni.
+Purtroppo, confrontandoci con il responsabile, abbiamo constatato la mancanza di risorse temporali per implementare questo tipo di test. Per come sono strutturati i controlli descritti con questo strumento, sarebbe stato estremamente utile modellare i comportamenti cruciali che abbiamo definito durante le revisioni di progettazione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\columnwidth]{immagini/passa-non-passa.jpg}
+    \caption{Calibro passa-non passa - Fonte: \href{https://meccanicatecnica.altervista.org/calibri-fissi/}{Calibri fissi - Meccanica Tecnica}}
+    \label{fig:passaNonPassa}
+\end{figure}
+%**************************************************************
+\subsection{\gls{solid} \textit{principles}}
+Il mio primo approccio a Bipod è avvenuto durante uno dei colloqui precedenti l'inizio dell'attività di stage. Il responsabile, mi ha mostrato il prototipo che era stato creato da un altro studente in precedenza. Una volta che ho avuto l'accesso al codice, ho notato diverse criticità che andavano risolte prima di affrontare il discorso \acrshort{ux}. Le più disturbanti erano la mancanza di strutturazione e l'innesto di componenti effettuato violando i principi \gls{solid}\glsfirstoccur.
+C'erano, infatti, alcune elaborazioni riguardanti la \textit{business-logic} all'interno delle componenti grafiche.
+Un altro problema era la rappresentazione \textit{back-end} della \textit{business-logic}. \acrshort{json} è un ottimo formato di dati che si comporta bene con JavaScript (per definizione) su cui sono basate molte librerie per la comunicazione su protocollo \acrshort{http}.
+Purtroppo, chi ha progettato la partizione \textit{back-end} di inserimento e gestione \acrshort{kpi}, ha deciso di impiegarlo in maniera leggermente inappropriata: dati che logicamente dovevano essere inseriti all'interno di determinati oggetti erano stati serializzati in dizionari \acrshort{json} separati. Inoltre ho notato che venivano impiegati \textit{array} per serializzare oggetti che dovevano avere un nome univoco, introducendo un controllo ulteriore che avrebbe dovuto essere fatto nel momento del salvataggio. Queste criticità minacciano l'integrità e la coerenza fra dati correlati. Una soluzione che ho proposto è quella di sfruttare il vincolo relazionale all'interno del database PostgreSQL per rappresentare tali informazioni e delegarne così l'integrità al \acrshort{dbms}. Il responsabile ha apprezzato questa proposta e ha detto che programmerà un ciclo di restauro \textit{back-end} per risolvere il problema.
+
+Per agevolare questa operazione futura, ho strutturato il mio codice basandomi sulla separazione delle componenti con logica propria e sul rispetto dei principi \gls{solid}.
+%**************************************************************
+\subsection{\textit{\acrshort{rest}fullnes}}
+Nelle due partizioni di software interessate dalla mia attività di stage ho notato che sia internamente, sia durante le comunicazioni fra di loro, avvenivano violazioni dei principi \acrshort{rest}. Ho deciso perciò di far rispettare al codice \textit{front-end} questa convenzione. Inoltre ho creato ex-novo il \textit{service} di comunicazione con il \textit{back-end} e modificato le \acrshort{api} in quest'ultimo sfruttando le annotazioni parametrizzando le chiamate con gli identificatori degli oggetti di interesse. Ho dovuto anche modificare le intestazioni e annotazioni di quasi tutti i metodi sviluppati su Micronaut per utilizzare le corrette chiamate \acrshort{http} in base all'operazione di interesse.
+\vspace{45pt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\columnwidth]{immagini/crudToRest.png}
+    \caption{CRUD to REST - Fonte: \href{https://www.edureka.co/blog/what-is-rest-api/}{What is REST API? - Edureka}}
+    \label{fig:crudToRest}
+\end{figure}
+\vspace{45pt}
+%**************************************************************
+\subsection{Riuso del codice}
+I file HTML impiegati per descrivere le \textit{form} di inserimento di termini e \acrshort{kpi} sono interpretati da Angular come veri e propri \textit{template}. Questo significa che sono a tutti gli effetti dei modelli di interfaccia grafica: ho deciso perciò di implementare le funzionalità di modifica di termini e \acrshort{kpi} sfruttando l'ereditarietà. Fra una \textit{form} di inserimento e una di modifica dello stesso componente, non cambiano ne le politiche di validazione della struttura del dato e nemmeno le regole di coerenza interne all'oggetto che sto definendo/modificando. Ho implementato perciò nella classe base il comportamento atteso dall'operazione di aggiunta elementi, effettuando l'\textit{override} dei metodi per ottenere il comportamento di modifica nella classe derivata.
+\newpage
 %**************************************************************
 \subsection{Esperienza utente}
-Spiega come e perché da una proposta di "restyle" di un prototipo, io abbia proposto di creare una nuova partizione di prodotto ex novo concentrandomi sull'esperienza utente
+Parte delle funzionalità di gestione dei \acrshort{kpi} era già stato fornito nelle versioni precedenti della piattaforma. Questo mi ha permesso di capire più velocemente la meccanica di base di tali operazioni. Il core della mia attività di stage è stata la valutazione delle esigenze utente durante tutti gli scenari di utilizzo possibili.
 
-%**************************************************************
-\subsection{Disaccoppiamento}
-Espone la situazione (drammatica) di alcune partizioni di software derivata dalla natura prototipale delle stesse o comunque da una ridotta progettazione e spiega il come io abbia voluto disaccoppiare la partizione del front-end dell'applicativo di mio interesse creando dapprima il mock-up di un servizio e poi andando a effettuare delle modifiche sul back-end che rispondessero alle specifiche REST in ambito CRUD.
+La difficoltà principale nell'effettuare tale operazione è stata riuscire ad immaginarsi quale sarebbero potute essere le possibili interazioni con un software di cui non avevo ancora fatto mia l'utilità. Questo era dovuto anche alla mancante assimilazione dei concetti di \textit{process mining} che dovevano ancora prendere una forma definita nella mia testa.
+Provando ad utilizzare l'interfaccia grafica di Bipod, ho individuato delle criticità che si sono rivelate base solida per definire l'esperienza utente nella gestione degli indicatori di performance.
+Per quanto riguarda la parte di \textit{dashboard} e di visualizzazione dei grafi di processo, ho dovuto confrontarmi con il responsabile per riuscire ad inquadrare il problema.
 
+Le peculiarità che ho voluto concretizzare nell'\acrshort{ux} sono le seguenti:
+\begin{itemize}
+    \item Fornitura di un sistema di ricerca di \acrshort{kpi} intuitivo e rapidamente accessibile;
+    \item Disposizione delle componenti ampia e organizzata secondo una logica derivata dagli scenari descritti che comporta un accesso rapido alle informazioni;
+    \item Facilitazione del riuso dei dati già inseriti per velocizzare operazioni iterative all'utente;
+    \item Estensibilità delle informazioni tramite personalizzazione di alcuni elementi come le unità di misura;
+    \item Informazioni tramite impatto grafico già all'interno delle viste;
+    \item Selezione delle informazioni da mostrare al primo impatto;
+    \item Sistema di \textit{completion} dei parametri che l'utente deve inserire ovunque possibile;
+    \item Sistema di collocazione spaziale dei componenti grafici della \textit{dashboard} tramite meccanismo \textit{drag and drop};
+    \item Gestione degli intervalli temporali avanzata, personalizzabile e, sopratutto, intuitiva.
+\end{itemize}
 %**************************************************************
 \subsection{Versioni software}
-Spiega l'importanza di verificare periodicamente la fattibilità di aggiornamenti LTS ed eventualmente effettuarli per non incorrere in problemi di aggiornamento a causa del gap che si crea in versioni di software "giovani"
+Durante l'attività di implementazione, ho avuto difficoltà a concretizzare in Bipod, una funzionalità dimostrata tramite \acrshort{poc} al responsabile. Mi sono confrontato con il tutor a riguardo e ho scoperto che la versione di Angular in uso sulla piattaforma era obsoleta e che il dimostrativo che avevo creato era invece basato su una versione recente da me installata in locale. Consultando infatti la documentazione del produttore per la specifica versione, abbiamo scoperto che tale funzionalità non era ancora stata sviluppata. Inoltre, la nomenclatura di un evento e del suo tipo, erano state cambiate nella versione nuova.
+Ho fatto una rapida valutazione di fattibilità sul passaggio alla nuova versione provando ad aggiornarla. L'operazione ha introdotto diversi problemi di compatibilità, difficili da affrontare tutti insieme. Ho perciò capito l'importanza di aggiornare in tempo utile le versioni software: quando possibile va verificata frequentemente la fattibilità e vanno consultati i \textit{changelog} per controllare se alcune funzionalità sono state deprecate o se sono cambiati i requisiti di alcune librerie o pacchetti.
+%**************************************************************
+\section{Risultati raggiunti}
+%**************************************************************
+\subsection{Obiettivi dell'attività di stage}
+Gli obiettivi, definiti assieme al responsabile, del mio progetto di stage erano diversi, alcuni più sfidanti, altri meno.
+Elencati nella seguente tabella, sono categorizzati secondo la nomenclatura:
+\begin{center}
+    O<tipo><progressivo>
+\end{center}
+dove
+\begin{itemize}
+    \item <tipo> indica la tipologia che li discrimina fra O - \textit{obbligatori} e F - \textit{facoltativi};
+    \item <progressivo> è un numero progressivo.
+\end{itemize}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|m{0.09\textwidth}|m{0.76\textwidth}|}
+        \hline
+        \textbf{Codice} & \textbf{Descrizione} \\ \hline
+        OO1 & Inquadramento del problema: stesura di un documento di specifica del problema \\ \hline
+        OO2 & Analisi di casi d’uso e requisiti\\ \hline
+        OO3 & Progettazione dell’interfaccia per ciascuna delle funzionalità indicate con eventuali mock-up \\ \hline
+        OO4 & Sviluppo del frontend di gestione dei KPI \\ \hline
+        OO5 & Documentazione: descrizione degli strumenti e delle tecniche utilizzate, descrizione dell’architettura del sistema, documentazione del progetto per lo sviluppatore e dei passi necessari per installare ed eseguire il tutto \\ \hline
+        OF1 & Analisi, progettazione e sviluppo della dashboard personalizzabile per il manager \\ \hline
+        OF2 & Analisi, progettazione e sviluppo di un modulo per la rappresentazione della value stream \\ \hline
+        OF3 & Gestione del point-and-click sul processo per eventuali arricchimenti dello schema di processo \\ \hline
+        OF4 & Gestione permessi utenti \\ \hline
+    \end{tabular}
+    \caption{Tabella degli obbiettivi dell'attività di stage}
+    \label{tab:obiettivi}
+\end{table}
+\newpage
+\subsection{Raggiungimento degli obiettivi}
+A termine del periodo di stage, ho effettuato, insieme al responsabile, la verifica della progressione raggiunta.
+La seguente tabella riporta il grado di soddisfazione degli obiettivi e il prodotto che li adempie:
+%\definecolor{LightGreen}{cmyk}{20, 0, 20, 18}
 
-\section{Prodotti dell'attività di stage}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|m{0.8\textwidth}|}
+    \hline
+        \textbf{Codice} & \textbf{Adempimento} & \textbf{Prodotto} \\ \hline
+        \rowcolor{green!15}
+        OO1 & Soddisfatto & Nota Evernote "Inquadramento stage Bettarello Alessio" \\ \hline
+        \rowcolor{green!15}
+        OO2 & Soddisfatto & Documento "Analisi dei requisiti" \\ \hline
+        \rowcolor{green!15}
+        OO3 & Soddisfatto & Documento Evernote "Specifiche tecniche" \\ \hline
+        \rowcolor{green!15}
+        OO4 & Soddisfatto & Codice sorgente all'interno del \textit{repository} \\ \hline
+        \rowcolor{green!15}
+        OO5 & Soddisfatto & Documento "Specifiche tecniche" e codice sorgente all'interno del
+        \textit{repository} \\ \hline
+        \rowcolor{orange!15}
+        OF1 & Parzialmente & Analisi presente in "Analisi dei requisiti" \\ \hline
+        \rowcolor{red!15}
+        OF2 & Non soddisfatto & \\ \hline
+        \rowcolor{red!15}
+        OF3 & Non soddisfatto & \\ \hline
+        \rowcolor{red!15}
+        OF4 & Non soddisfatto & \\ \hline
+    \end{tabular}
+    \caption{livello di soddisfacimento degli obiettivi di stage}
+    \label{tab:goalObiettivi}
+\end{table}
 %**************************************************************
 \subsection{Analisi dei requisiti}
-Espone la completezza del prodotto analisi dei requisiti rispetto agli obiettivi obbligatori e opzionali dello stage e quantifica la sua utilità
+Il primo e (a mio parere) più importante prodotto dell'attività di stage, è l'analisi dei requisiti.
+\'E lo strumento più efficace per esprimere la base dell'\acrshort{ux} che si vuole fornire.
 
+Per questioni di completezza e coerenza, questa è stata effettuata su tutte le funzionalità che la piattaforma deve fornire.
+Una volta ultimata l'analisi, i macro-scenari individuati erano i seguenti:
+\begin{itemize}
+    \item Autenticazione
+    \item Visualizzazione \textit{dashboard}
+    \item Visualizzazione \acrshort{kpi} in osservazione
+    \item Creazione \acrshort{kpi}
+    \item Modifica \acrshort{kpi}
+    \item Creazione termini
+    \item Modifica termini
+\end{itemize}
+
+Di ognuno di essi è stato analizzato il dettaglio come descritto in \S\ref{ssec:diagrams}.
+Per aumentare la precisione sono state inserite le caratteristiche fondamentali degli scenari indicando anche pre e post condizioni.
+Questo ha portato a cascata a definire i requisiti essenziali a cui la piattaforma deve rispondere facilitando in seguito la verifica dell'operato del gruppo.
+
+Il documento è composto dall'analisi di 34 casi d'uso che hanno introdotto 86 requisiti. Di questi, ne abbiamo soddisfatti 63 ovvero una percentuale del 73\%.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\columnwidth]{immagini/chart.png}
+    \caption{Andamento soddisfacimento dei requisiti}
+    \label{fig:reqChart}
+\end{figure}
 %**************************************************************
 \subsection{Diario delle attività}
-Espone come è stato redatto e quale sia la sua utilità
-
+L'utilità di questo documento condiviso è molteplice: per prima cosa aiuta a capire se le attività stanno portano al giusto traguardo; inoltre tiene traccia delle scelte tecniche intraprese per ovviare agli imprevisti sorti durante il percorso. \'E stato redatto giorno per giorno indicando in maniera essenziale cosa è stato fatto e in maniera più prolissa, qualora ci siano state analisi critiche.
+%**************************************************************
+\subsection{Specifiche tecniche}
+Qualora, nel corso del progetto, ci fossero state scelte tecniche da intraprendere, ho riportato le informazioni tecniche e le motivazioni delle mie scelte in una nota Evernote chiamata "Specifiche tecniche".Essendo presente nel taccuino relativo allo stage, essa è condivisa e facilmente fruibile dal responsabile.
+Le scelte tecniche più significative sono le seguenti:
+\begin{itemize}
+    \item Eliminazione delle vecchie componenti in favore di maggiore separazione;
+    \item Gestione progettuale tramite \acrshort{poc} e \textit{mock} dei \textit{service} invece che con \textit{mock-up} grafici;
+    \item Scelta di replicare i controlli sui dati \textit{back-end} anche nelle corrispettive chiamate \textit{front-end};
+    \item Scelta dell'utilizzo della sorgente dati Material Data Table per la visualizzazione tabulare al posto di rappresentazione tabulare HTML classica;
+    \item Aggiunta, nel modello dei dati relativi ai \acrshort{kpi}, delle informazioni relative all'unità di misura
+    \item Scelta del meccanismo di selezione date per \textit{sliding window} basato su operazioni di resto della divisione intera
+    \item Modifica delle \acrshort{api} \textit{back-end} per rispettare i principi \acrshort{rest}
+\end{itemize}
 %**************************************************************
 \subsection{Codice sorgente}
-Espone cosa è stato prodotto a livello di sorgente
+La concretizzazione dello studio dell'\acrshort{ux} di Bipod, è stata effettuata tramite la stesura di codice TypeScript e Java. Tutto ciò che è stato implementato risiede nel \textit{repository} aziendale ed è perciò accessibile da tutto il reparto. Ogni versione del codice che ho caricato, contiene incrementi significativi che evidenziano perciò quali modifiche sono state effettuate per aggiungere una determinata funzionalità. Il prodotto codice sorgente non è perciò da intendersi come monade ma come successione di \gls{commit} che ha portato al risultato ottenuto.
+Nella tabella seguente sono indicati alcune rilevazioni effettuate sul codice:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \# commit effettuati & 40 \\ \hline
+        \# File di codice modificati & 65 \\ \hline
+        \# File di codice aggiunti & 17 \\ \hline
+        \# Righe modificate & 6632 \\ \hline
+        \ Media copertura \textit{docstrings} & 92.94\% \\ \hline
+        \# Ore di codifica & 88 \\ \hline
+    \end{tabular}
+    \caption{Dati sul codice}
+    \label{tab:codeData}
+\end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{immagini/linguaggi.png}
+    \caption{Suddivisione oraria per linguaggio (tempo di digitazione)}
+    \label{fig:languages}
+\end{figure}
+%**************************************************************
