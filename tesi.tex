@@ -18,7 +18,13 @@
 % !TEX TS-program = pdflatex
 % !TEX root = tesi.tex
 % !TEX spellcheck = it-IT
-
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Migliorare l'esperienza utente nell'amministrazione della gestione di processo} \Author{Alessio Bettarello}
+\Language{it-IT}
+\Subject{Tesi di laurea}
+\Keywords{gui \sep dashboard \sep gestione di processi \sep process mining \sep front-end}
+\end{filecontents*}
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
                twoside,                 % impagina per fronte-retro
@@ -26,7 +32,11 @@
                english,                 
                italian,                 
                ]{book}    
-
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{colorprofiles}
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
+\usepackage[T1]{fontenc}
 %**************************************************************
 % Importazione package
 %************************************************************** 
