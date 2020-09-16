@@ -6,6 +6,52 @@
 \chapter{Svolgimento del progetto}
 \label{cap:modalita-svolgimento}
 %**************************************************************
+\section{Aspettative del progetto}
+\label{sec:aspettative}
+Nei primi giorni di stage ho individuato i requisiti che la piattaforma avrebbe dovuto soddisfare per portare a termine gli obiettivi.
+Le funzionalità che dovevo implementare in Bipod si concretizzano nei requisiti individuati dal codice nel formato:
+\begin{center}
+    \noindent R<tipo><progressivo> - <descrizione>
+\end{center}
+dove:
+\begin{itemize}
+    \item tipo identifica la tipologia in base agli obiettivi cui deve adempiere:
+    \begin{itemize}
+        \item \textbf{O} - Obbligatorio;
+        \item \textbf{F} - Facoltativo;
+    \end{itemize}
+    \item Progressivo è un codice composto da più numeri separati dal carattere "." che indicano il rapporto gerarchico fra i requisiti.
+\end{itemize}
+I seguenti requisiti sono quelli principali:
+\begin{longtable}[!h]{|p{0.2\textwidth}|p{0.8\textwidth}|}
+    \hline
+        \textbf{Codice} & \textbf{Requisito} \\ \hline
+         RO1 & Gestione autenticazione \\ \hline
+         RO2 & Gestione e inserimento \acrshort{kpi} \\ \hline
+         RO2.1 & Selezione del processo\\ \hline
+         RO2.2 & Inserimento e gestione termini\\ \hline
+         RO2.2.1 & Inserimento filtri di ricerca\\ \hline
+         RO2.2.2 & Selezione tipologia operazione\\ \hline
+         RO2.2.3 & Selezione intervallo temporale\\ \hline
+         RO2.3 & Inserimento formula e soglie per il \acrshort{kpi}\\ \hline
+         RO3 & Vista elenco \acrshort{kpi}\\ \hline
+         RO3.1 & Filtraggio entry\\ \hline
+         RO3.2 & Selezione della modalità di visualizzazione\\ \hline
+         RO3.3 & Modifica e cancellazione di \acrshort{kpi}\\ \hline
+         RF1 & Vista e gestione \textit{dashboard}\\ \hline
+         RF1.1 & Configurazione delle componenti \textit{dashboard}\\ \hline
+         RF1.1.1 & Selezione di un particolare tipo di componente grafico\\ \hline
+         RF1.1.2 & Selezione della \acrshort{kpi} che il componente deve rispecchiare\\ \hline
+         RF1.1.3 & Selezione della posizione del componente grafico\\ \hline
+         RF1.1.4 & Selezione della dimensione del componente grafico\\ \hline
+         RF2 & Configurazione \textit{dashboard} per amministratore\\ \hline
+         RF3 & Vista grafo di processo\\ \hline
+         RF3.1 & Selezione del processo di riferimento\\ \hline
+         RF3.2 & Visualizzazione dettaglio eventi all'interno dei nodi\\ \hline
+         RF3.3 & Visualizzazione dettaglio temporale al passaggio sugli archi\\ \hline
+    \caption{Elenco principali requisiti funzionali}
+    \label{tab:requirements}
+\end{longtable}
 \section{Metodo di sviluppo}
 %**************************************************************
 \subsection{L'uso di cicli di sviluppo}
@@ -73,6 +119,13 @@ Nella strategia incrementale che Siav impiega per Bipod, questo è necessario pe
 %**************************************************************
 \subsection{Tecnologie software sfruttate}
 In questa sezione espongo come ho sfruttato alcune tecnologie indicate in \S\ref{ssec:techEnvolved} assieme a quelle introdotte dall'attività di stage e agli strumenti indicati in \S\ref{ssec:usedTools}.
+\vspace{40pt}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{immagini/how_api_works.png}
+    \caption{Come funzionano le \acrshort{api} - Fonte: \href{https://www.facebook.com/eryutech/photos/application-programming-interface-apihow-it-works-eryutech/1125855790904330/}{ERYUTech}}
+    \label{fig:howApiWorks}
+\end{figure}
 %**************************************************************
 \subsubsection{Docker}
 \label{ssec:docker}
@@ -80,13 +133,13 @@ Questo strumento si basa su \textit{file} di configurazione che permettono la vi
 
 Il reparto, tramite l'intervento dell'amministratore, effettua \acrshort{ci} tramite il \textit{deploy} manuale su un server virtuale interno all'azienda. Per crearmi un ambiente di pseudo integrazione continua, ho preferito virtualizzare l'ambiente di produzione in locale non esistendo alcun tipo di test di integrazione predisposto per il lato back-end. Dopo pochi giorni, è diventato inutilizzabile a causa di scarsità di memoria volatile. Dopo aver identificato il problema nella virtualizzazione dei servizi, ho individuato quali erano quelli essenziali per l'esecuzione della partizione \textit{front-end} e ho scartato dal file di configurazione di Docker, quelli che non venivano sfruttati.
 La velocità con cui ho risolto un problema che sembrava molto difficile da risolvere, mi ha fatto capire quanto Docker sia facilmente adattabile ad ogni situazione.
+\newpage
 %**************************************************************
 \subsubsection{Angular}
 La potenzialità maggiore derivata dall'impiego di questo \textit{framework} risiede, anche in questo caso, nella flessibilità. Questo perché esso è orientato all'impiego di modelli di dato e di vista: premette perciò di rappresentare facilmente informazioni di diversa origine in maniera dinamica semplicemente cambiando template oppure cambiandone la classe di comportamento associata.
 Inoltre va a braccetto con Material Design essendo entrambi sviluppati e manutenuti da Google. L'integrazione della libreria grafica Material mi è risultata estremamente facile ed intuitiva, e perciò lo è anche per i programmatori meno esperti.
 
 Un'altra funzionalità che ho largamente sfruttato è la creazione di file \acrshort{xml} per l'internalizzazione: tramite il comando \verb|ng xi18n|, Angular genera un file nel formato specificato (\acrshort{xliff}\glsfirstoccur 1.2 se non specificato). Questa operazione si basa sulla marchiatura degli elementi localizzabili tramite un apposito attributo (nel caso di codice HTML) o annotazione (nel sorgente TypeScript). L'\textit{output} è un file di lingua \emph{sorgente}. Va generato ogniqualvolta vengano introdotti nuovi elementi testuali specifici della lingua di sviluppo o che comportano utilizzo di variabili che vanno localizzate come importi in valuta o date (di default vengono interpretati come inglese americano) all'interno delle interfacce o del codice. Costruendo traduzioni sulla base di quel \textit{file}, è possibile effettuare una \textit{build} per la località di destinazione passandolo come parametro.
-\newpage
 %**************************************************************
 \subsubsection{NodeJS}
 "Node.js® è un \textit{runtime} JavaScript costruito sul motore JavaScript V8 di Chrome"\footcite{site:nodeJS}. Nel progetto è stato utilizzato per eseguire in locale il servizio \textit{front-end}. Tramite il suo file di configurazione \emph{package.json}, ho definito diverse versioni di \textit{build} che vengono eseguite automaticamente per generare le versioni internazionalizzate della piattaforma.
@@ -99,14 +152,12 @@ Tramite Micronaut, ho effettuato delle modifiche al codice \textit{back-end} per
 
 Il \textit{framework} Micronaut è molto vasto per modalità di impiego e opzioni disponibili e ciò si riflette sulla dimensione della documentazione di riferimento.
 Una critica che mi permetto di fare è che spesso le informazioni mi sono risultate frammentarie all'interno delle varie sezioni e per recuperare la corretta e completa annotazione utile alla creazione di una \acrshort{api} non basilare, ho dovuto ricorrere alla ricerca di esempi di impiego da fonti esterne.
-\vspace{35pt}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\columnwidth]{immagini/how_api_works.png}
-    \caption{Come funzionano le \acrshort{api} - Fonte: \href{https://www.facebook.com/eryutech/photos/application-programming-interface-apihow-it-works-eryutech/1125855790904330/}{ERYUTech}}
-    \label{fig:howApiWorks}
+    \includegraphics[width=\columnwidth]{immagini/Network scheme-2.png}
+    \caption{Interazione fra le tecnologie impiegate}
+    \label{fig:techInteraction}
 \end{figure}
-\newpage
 %**************************************************************
 \subsubsection{PoEdit}
 Dopo essermi documentato attentamente sul formato \acrshort{xliff}, ho dovuto creare un file di traduzione per mettere in atto ciò che avevo imparato. L'idea iniziale proposta dal tutor era quella di modificare manualmente il file \acrshort{xliff} originale introducendo la traduzione nella lingua \textit{target}. Non ritenendo utile procedere in questa maniera, ho subito pensato che doveva per forza esistere un software che permettesse agevolmente di effettuare questa operazione. La risposta è arrivata consultando \gls{discover}\glsfirstoccur dove ho trovato PoEdit.
@@ -118,7 +169,7 @@ Questo \textit{tool} è risultato molto efficace nella creazione di traduzione d
     \item Verificare automaticamente la coerenza delle traduzioni inserite controllandone la formattazione;
     \item Effettuare le operazioni descritte sopra su un file di \textit{localization} condiviso su Crowdin.
 \end{itemize}
-
+\newpage
 %**************************************************************
 \subsection{Strumenti di collaborazione}
 %**************************************************************
@@ -128,12 +179,14 @@ Nonostante essa fosse frequente, la comunicazione durante lo stage, non è stata
 Fra le varie caratteristiche, Telegram permette di condividere, con i propri contatti, files di grandi dimensioni\footcite{site:telegram}, funzionalità che in reparto abbiamo ampiamente apprezzato.
 %**************************************************************
 \paragraph{Zoom} Il \textit{client} di videoconferenze americano ha avuto molto successo durante quest'anno grazie al largo impiego in ambito aziendale e scolastico rientrando nei software indispensabili di molte persone\footcite{site:zoomBlog}. Il pregio che ho potuto rilevare è la bassa sete di banda e di caratteristiche \textit{hardware}. Degne di nota anche la funzione di controllo remoto e la vastità delle opzioni configurabili.
+\vspace{30pt}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\columnwidth]{immagini/vc_struggle.jpg}
     \caption{\textit{Video call struggle} - Fonte: \href{https://www.commsbusiness.co.uk/news/9-out-of-10-people-struggle-when-connecting-to-a-video-conference-call/}{9 out of 10 people struggle when connecting to a video conference call - Comms Business}}
     \label{fig:vcStruggle}
 \end{figure}
+\newpage
 Non mancano, però evidenti difetti che ho potuto rilevare. Per primo, quello trascurabile dell'interfaccia grafica, poco gradevole e rievocante software datati. Il secondo, un'esperienza utente da dimenticare\footnote{Versione 5.2 su Kubuntu 20.04}:
 \begin{itemize}
     \item Accesso alle riunioni macchinoso;
@@ -158,6 +211,7 @@ Dal mio punto di vista, risulta più comodo perché, come ad esempio per il ling
 %**************************************************************
 \paragraph{Google Docs}
 Il tool offerto da Google permette di creare documenti condivisi in maniera semplice e veloce. Possiede le funzionalità essenziali dei classici \textit{tool} di \textit{office automation}, sufficienti allo scopo. Le funzionalità più interessanti di questo strumento sono lo \textit{storaging} su Google Drive e il registro delle modifiche che tiene traccia di quali editori hanno effettuato determinate modifiche nel tempo.
+\newpage
 %**************************************************************
 \paragraph{Evernote}
 Il \textit{tool} (introdotto in \S\ref{ssec:usedTools}) fornisce il vantaggio di condividere velocemente appunti con i colleghi. Molto utile anche la funzionalità di allegazione di documenti pdf alle note, utile quando c'è bisogno di fare delle annotazioni con riferimenti ad uno specifico documento locale. Nell'utilizzo collaborativo, risulta essere un disastro: non è infatti possibile usufruire contemporaneamente dello stesso documento in modalità di modifica. Inoltre, per ragioni non ancora note, durante un accesso accidentalmente sincronizzato, il responsabile ha perso tutti i contenuti grafici allegati alla nota che stava elaborando; comportamento decisamente non desiderabile, anche perché a detta sua, recidivo.
@@ -171,6 +225,7 @@ Nonostante io sia stato un utilizzatore dal momento del lancio fino all'arrivo d
     \label{fig:oldTech}
 \end{figure}
 \newpage
+
 \subsubsection{Implementazione}
 %**************************************************************
 \paragraph{VS Code}
@@ -248,14 +303,14 @@ Le peculiarità che ho voluto concretizzare nell'\acrshort{ux} sono le seguenti:
 \end{itemize}
 %**************************************************************
 \subsection{Versioni software}
-Durante l'attività di implementazione, ho avuto difficoltà a concretizzare in Bipod, una funzionalità dimostrata tramite \acrshort{poc} al responsabile. Mi sono confrontato con il tutor a riguardo e ho scoperto che la versione di Angular in uso sulla piattaforma era obsoleta e che il dimostrativo che avevo creato era invece basato su una versione recente da me installata in locale. Consultando infatti la documentazione del produttore per la specifica versione, abbiamo scoperto che tale funzionalità non era ancora stata sviluppata. Inoltre, la nomenclatura di un evento e del suo tipo, erano state cambiate nella versione nuova.
+Durante l'attività di implementazione, ho avuto difficoltà a concretizzare in Bipod, una funzionalità dimostrata tramite \acrshort{poc} al responsabile. Mi sono confrontato con il tutor a riguardo e ho scoperto che la versione di Angular in uso sulla piattaforma era obsoleta e che il dimostrativo che avevo creato era invece basato su una versione recente da me installata in locale. Consultando infatti la documentazione del produttore per la specifica versione, ho scoperto che tale funzionalità non era ancora stata sviluppata. Inoltre, la nomenclatura di un evento e del suo tipo, erano state cambiate nella versione nuova.
 Ho fatto una rapida valutazione di fattibilità sul passaggio alla nuova versione provando ad aggiornarla. L'operazione ha introdotto diversi problemi di compatibilità, difficili da affrontare tutti insieme. Ho perciò capito l'importanza di aggiornare in tempo utile le versioni software: quando possibile va verificata frequentemente la fattibilità e vanno consultati i \textit{changelog} per controllare se alcune funzionalità sono state deprecate o se sono cambiati i requisiti di alcune librerie o pacchetti.
 %**************************************************************
 \section{Risultati raggiunti}
 %**************************************************************
 \subsection{Obiettivi dell'attività di stage}
-Gli obiettivi, definiti assieme al responsabile, del mio progetto di stage erano diversi, alcuni più sfidanti, altri meno.
-Elencati nella seguente tabella, sono categorizzati secondo la nomenclatura:
+Gli obiettivi, che ho definito assieme al responsabile, del mio progetto di stage erano diversi, alcuni più sfidanti, altri meno.
+Sono elencati nella seguente tabella, categorizzati secondo la nomenclatura:
 \begin{center}
     O<tipo><progressivo>
 \end{center}
@@ -282,46 +337,96 @@ dove
     \caption{Tabella degli obbiettivi dell'attività di stage}
     \label{tab:obiettivi}
 \end{table}
+Da questi obiettivi discende a cascata il seguente tracciamento dei requisiti indicati in \S\ref{sec:aspettative}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|m{0.8\textwidth}|}
+    \hline
+        \textbf{Obiettivo} & \textbf{Requisiti da soddisfare} \\ \hline
+        OO4 & RO2, RO2.1, RO2.2, RO2.2.1, RO2.2.2, RO2.2.3, RO2.3, RO3, RO3.1, RO3.2, RO3.3 \\ \hline
+        OF1 & RF1, RF1.1, RF1.1.1, RF1.1.2, RF1.1.3, RF1.1.4 \\ \hline
+        OF2 & RF3, RF3.1, RF3.2 \\ \hline
+        OF3 & RF3.2 \\ \hline
+        OF4 & RO2.2.3 \\ \hline
+    \end{tabular}
+    \caption{Tracciamento dei requisiti rispetto gli obiettivi}
+    \label{tab:tracciamento}
+\end{table}
 \newpage
 \subsection{Raggiungimento degli obiettivi}
-A termine del periodo di stage, ho effettuato, insieme al responsabile, la verifica della progressione raggiunta.
-La seguente tabella riporta il grado di soddisfazione degli obiettivi e il prodotto che li adempie:
-%\definecolor{LightGreen}{cmyk}{20, 0, 20, 18}
+A termine del periodo di stage, ho effettuato, insieme al responsabile, la verifica dei requisiti presentati in \S\ref{sec:aspettative}. Il risultato è il seguente:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \textbf{Requisito} & {Soddisfacimento} \\
+        \rowcolor{green!15} RO1 & Soddisfatto \\ \hline
+        \rowcolor{green!15} RO2 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.1 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.2 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.2.1 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.2.2 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.2.3 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO2.3 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO3 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO3.1 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO3.2 & Soddisfatto \\  \hline
+        \rowcolor{green!15} RO3.3 & Soddisfatto \\  \hline
+        \rowcolor{red!15} RF1 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF1.1 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF1.1.1 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF1.1.2 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF1.1.3 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF1.1.4 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF2 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF3 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF3.1 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF3.2 & Non soddisfatto \\ \hline
+        \rowcolor{red!15} RF3.3 & Non soddisfatto \\ \hline
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+Di conseguenza, il livello di raggiungimento degli obiettivi, non è stato quello da me desiderato ma comunque sufficiente.
+Ecco lo stato di raggiungimento degli stessi assieme al prodotto che lo ha permesso:
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|m{0.8\textwidth}|}
+    \begin{tabular}{|m{0.08\textwidth}|m{0.20\textwidth}|m{0.72\textwidth}|}
     \hline
-        \textbf{Codice} & \textbf{Adempimento} & \textbf{Prodotto} \\ \hline
+        \textbf{Codice} & \textbf{Raggiungimento} & \textbf{Prodotto} \\ \hline
         \rowcolor{green!15}
-        OO1 & Soddisfatto & Nota Evernote "Inquadramento stage Bettarello Alessio" \\ \hline
+        OO1 & Raggiunto & Nota Evernote "Inquadramento stage Bettarello Alessio" \\ \hline
         \rowcolor{green!15}
-        OO2 & Soddisfatto & Documento "Analisi dei requisiti" \\ \hline
+        OO2 & Raggiunto & Documento "Analisi dei requisiti" \\ \hline
         \rowcolor{green!15}
-        OO3 & Soddisfatto & Documento Evernote "Specifiche tecniche" \\ \hline
+        OO3 & Raggiunto & Documento Evernote "Specifiche tecniche" \\ \hline
         \rowcolor{green!15}
-        OO4 & Soddisfatto & Codice sorgente all'interno del \textit{repository} \\ \hline
+        OO4 & Raggiunto & Codice sorgente all'interno del \textit{repository} \\ \hline
         \rowcolor{green!15}
-        OO5 & Soddisfatto & Documento "Specifiche tecniche" e codice sorgente all'interno del
+        OO5 & Raggiunto & Documento "Specifiche tecniche" e codice sorgente all'interno del
         \textit{repository} \\ \hline
         \rowcolor{orange!15}
         OF1 & Parzialmente & Analisi presente in "Analisi dei requisiti" \\ \hline
         \rowcolor{red!15}
-        OF2 & Non soddisfatto & \\ \hline
+        OF2 & Non raggiunto & \\ \hline
         \rowcolor{red!15}
-        OF3 & Non soddisfatto & \\ \hline
+        OF3 & Non raggiunto & \\ \hline
         \rowcolor{red!15}
-        OF4 & Non soddisfatto & \\ \hline
+        OF4 & Non raggiunto & \\ \hline
     \end{tabular}
-    \caption{livello di soddisfacimento degli obiettivi di stage}
+    \caption{Livello di soddisfacimento degli obiettivi di stage}
     \label{tab:goalObiettivi}
 \end{table}
+
+
 %**************************************************************
 \subsection{Analisi dei requisiti}
-Il primo e (a mio parere) più importante prodotto dell'attività di stage, è l'analisi dei requisiti.
+Il primo e,a mio parere, più importante prodotto dell'attività di stage, è l'analisi dei requisiti.
 \'E lo strumento più efficace per esprimere la base dell'\acrshort{ux} che si vuole fornire.
 
-Per questioni di completezza e coerenza, questa è stata effettuata su tutte le funzionalità che la piattaforma deve fornire.
+Per questioni di completezza e coerenza, l'ho effettuata su tutte le funzionalità che la piattaforma deve fornire.
 Una volta ultimata l'analisi, i macro-scenari individuati erano i seguenti:
 \begin{itemize}
     \item Autenticazione
@@ -333,23 +438,25 @@ Una volta ultimata l'analisi, i macro-scenari individuati erano i seguenti:
     \item Modifica termini
 \end{itemize}
 
-Di ognuno di essi è stato analizzato il dettaglio come descritto in \S\ref{ssec:diagrams}.
+Di ognuno di essi ho analizzato il dettaglio come descritto in \S\ref{ssec:diagrams}.
 Per aumentare la precisione sono state inserite le caratteristiche fondamentali degli scenari indicando anche pre e post condizioni.
-Questo ha portato a cascata a definire i requisiti essenziali a cui la piattaforma deve rispondere facilitando in seguito la verifica dell'operato del gruppo.
+Ho poi definito a cascata a i requisiti a cui la piattaforma deve rispondere facilitando in seguito la verifica dell'operato del gruppo. Parte di essi è riportato in \S\ref{sec:aspettative}
 
 Il documento è composto dall'analisi di 34 casi d'uso che hanno introdotto 86 requisiti. Di questi, ne abbiamo soddisfatti 63 ovvero una percentuale del 73\%.
+\vspace{50pt}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\columnwidth]{immagini/chart.png}
     \caption{Andamento soddisfacimento dei requisiti}
     \label{fig:reqChart}
 \end{figure}
+\newpage
 %**************************************************************
 \subsection{Diario delle attività}
-L'utilità di questo documento condiviso è molteplice: per prima cosa aiuta a capire se le attività stanno portano al giusto traguardo; inoltre tiene traccia delle scelte tecniche intraprese per ovviare agli imprevisti sorti durante il percorso. \'E stato redatto giorno per giorno indicando in maniera essenziale cosa è stato fatto e in maniera più prolissa, qualora ci siano state analisi critiche.
+L'utilità che ho percepito di questo documento condiviso è molteplice: per prima cosa aiuta a capire le attività che eseguo portino al giusto traguardo; inoltre aiuta me e i colleghi a tenere traccia delle scelte tecniche intraprese per ovviare agli imprevisti sorti durante il percorso. L'ho redatto giorno per giorno indicando in maniera essenziale cosa è stato fatto e in maniera più prolissa, qualora abbia fatto analisi critiche.
 %**************************************************************
 \subsection{Specifiche tecniche}
-Qualora, nel corso del progetto, ci fossero state scelte tecniche da intraprendere, ho riportato le informazioni tecniche e le motivazioni delle mie scelte in una nota Evernote chiamata "Specifiche tecniche".Essendo presente nel taccuino relativo allo stage, essa è condivisa e facilmente fruibile dal responsabile.
+Qualora, nel corso del progetto, io abbia dovuto effettuare scelte tecniche da intraprendere, ho riportato le informazioni tecniche e le motivazioni delle mie scelte in una nota Evernote chiamata "Specifiche tecniche".Essendo presente nel taccuino relativo allo stage, essa è condivisa e facilmente fruibile dal responsabile.
 Le scelte tecniche più significative sono le seguenti:
 \begin{itemize}
     \item Eliminazione delle vecchie componenti in favore di maggiore separazione;
@@ -360,10 +467,11 @@ Le scelte tecniche più significative sono le seguenti:
     \item Scelta del meccanismo di selezione date per \textit{sliding window} basato su operazioni di resto della divisione intera
     \item Modifica delle \acrshort{api} \textit{back-end} per rispettare i principi \acrshort{rest}
 \end{itemize}
+\newpage
 %**************************************************************
 \subsection{Codice sorgente}
-La concretizzazione dello studio dell'\acrshort{ux} di Bipod, è stata effettuata tramite la stesura di codice TypeScript e Java. Tutto ciò che è stato implementato risiede nel \textit{repository} aziendale ed è perciò accessibile da tutto il reparto. Ogni versione del codice che ho caricato, contiene incrementi significativi che evidenziano perciò quali modifiche sono state effettuate per aggiungere una determinata funzionalità. Il prodotto codice sorgente non è perciò da intendersi come monade ma come successione di \gls{commit} che ha portato al risultato ottenuto.
-Nella tabella seguente sono indicati alcune rilevazioni effettuate sul codice:
+Ho effettuato la concretizzazione dello studio dell'\acrshort{ux} di Bipod tramite la stesura di codice TypeScript e Java. Tutto ciò che ho implementato risiede nel \textit{repository} aziendale ed è perciò accessibile da tutto il reparto. Ogni versione del codice che ho caricato, contiene incrementi significativi che evidenziano perciò quali modifiche ho effettuato per aggiungere una determinata funzionalità. Il prodotto codice sorgente non è perciò da intendersi dal lettore come monade ma come successione di \gls{commit} che mi ha portato al risultato ottenuto.
+Nella tabella seguente ho indicato alcune rilevazioni effettuate sul codice:
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|}
