@@ -3,82 +3,85 @@
 % !TEX root = ../tesi.tex
 
 %**************************************************************
-\chapter{Analisi dei requisiti}
-\label{cap:analisi-requisiti}
+\chapter{Indici di prestazione dello stage}
+\label{cap:performance-stage}
 %**************************************************************
-
-\intro{Breve introduzione al capitolo}\\
-
-\section{Casi d'uso}
-
-Per lo studio dei casi di utilizzo del prodotto sono stati creati dei diagrammi.
-I diagrammi dei casi d'uso (in inglese \emph{Use Case Diagram}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
-Essendo il progetto finalizzato alla creazione di un tool per l'automazione di un processo, le interazioni da parte dell'utilizzatore devono essere ovviamente ridotte allo stretto necessario. Per questo motivo i diagrammi d'uso risultano semplici e in numero ridotto.
-
-\begin{figure}[!h] 
-    \centering 
-    \includegraphics[width=0.9\columnwidth]{usecase/scenario-principale} 
-    \caption{Use Case - UC0: Scenario principale}
-\end{figure}
-
-\begin{usecase}{0}{Scenario principale}
-\usecaseactors{Sviluppatore applicativi}
-\usecasepre{Lo sviluppatore è entrato nel plug-in di simulazione all'interno dell'IDE}
-\usecasedesc{La finestra di simulazione mette a disposizione i comandi per configurare, registrare o eseguire un test}
-\usecasepost{Il sistema è pronto per permettere una nuova interazione}
-\label{uc:scenario-principale}
-\end{usecase}
-
-\section{Tracciamento dei requisiti}
-
-Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto è stata stilata la tabella che traccia i requisiti in rapporto agli use case.\\
-Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.\\
-Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
-\begin{enumerate}
-	\item[R =] requisito
-    \item[F =] funzionale
-    \item[Q =] qualitativo
-    \item[V =] di vincolo
-    \item[N =] obbligatorio (necessario)
-    \item[D =] desiderabile
-    \item[Z =] opzionale
-\end{enumerate}
-Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
-
+\section{Come abbiamo organizzato l'attività di stage}
+%**************************************************************
+\subsection{Obiettivi dello stage}
+\subsubsection{La scelta degli obiettivi}
+%**************************************************************
+\subsubsection{Aspettative vs realtà}
+\label{ssec:aspettative}
+ Siav, come già detto, lascia molta libertà agli studenti di individuare gli obiettivi che li stimolino di più: durante un incontro preliminare con il responsabile, infatti, avevo espresso la mia preferenza verso la realizzazione della \textit{dashboard} perché più congeniale alle mie attitudini e pregresse esperienze lavorative. Ciononostante, il responsabile, ha cercato di orientarmi sul risolvere prima il problema di gestione \acrshort{kpi} e poi pensare alla realizzazione di un cruscotto configurabile. Ho faticato ad apprezzare questo consiglio perché non capivo come mai, se la   \textit{form} di inserimento \acrshort{kpi} fosse già funzionante, dovessi impegnarmi per darle un aggiustamento grafico. Pensavo che, a seguito di uno studio della documentazione di Angular e qualche prova, sarei riuscito ad ultimare facilmente il compito e avrei portato a casa l'obiettivo lasciando spazio per concentrarmi sulla \textit{dashboard}. Una volta che ho cominciato a utilizzare il software come utente per familiarizzare con la piattaforma, mi sono reso conto del mio errore di valutazione. Più passava il tempo e più apprendevo concetti propri di chi lavora con metodo nell'analisi e amministrazione di processo. Parallelamente a questo apprendimento, cresceva il numero di modifiche che desideravo effettuare alla \acrshort{ux} per fornire all'utente il servizio desiderato. Ho capito perciò due cose:
+\begin{itemize}
+    \item La superficialità nell'effettuare le valutazioni può generare situazioni spiacevoli e indesiderate;
+    \item l'analisi e la progettazione della \acrlong{ux} sono attività estremamente delicate, anche se sono già state individuate le funzionalità di massima che lo sviluppatore vuole offrire all'utente.
+\end{itemize}
 \newpage
+%**************************************************************
+\subsubsection{Soddisfacimento degli obiettivi}
+Come si può notare in \S\ref{ssec:objValue}, sono riuscito a raggiungere solamente gli obiettivi obbligatori. Il rammarico per non avere raggiunto il \textit{goal} sul mio obiettivo preferito, ovvero la realizzazione della \textit{dashboard}, è stato però compensato dalla soddisfazione personale riguardo alla cura messa nello svolgere il mio lavoro. Il riscontro di ciò lo trovo nella soddisfazione espressa da parte del responsabile che può presentare, all'amministrazione che su di lui vigila, un prodotto palpabile e solido. Sono comunque soddisfatto dell'analisi dei requisiti che ho effettuato, in quanto copre anche la configurazione dei cruscotti informativi.
+%**************************************************************
+\subsection{Cicli di sviluppo: Micro vs Macro}
+%**************************************************************
+\subsubsection{Vantaggi}
+Inizialmente, il progetto di stage, era stato pianificato, da me e dal responsabile, come un unico ciclo di sviluppo che comprendeva tutte le attività necessarie al raggiungimento degli obiettivi. Come detto in \S\ref{ssec:aspettative}, via via che definivo i requisiti, notavo nuove funzionalità che sarebbe stato bello fornire all'utente per dare un'esperienza completa nell'utilizzo della piattaforma. Se il responsabile non mi avesse dato la possibilità di porzionare le funzionalità in macro categorie e svilupparle in maniera separata, probabilmente, sarebbe insorto il rischio di non ottenere quello che desideravamo. Organizzando il lavoro in micro-cicli di sviluppo ed effettuando verifica frequentemente, il \textit{team} è riuscito a mantenere ben chiaro l'obiettivo (che era stato formalizzato solo in termini di possibilità) che la piattaforma doveva offrire e che non includeva implicitamente il come lo dovesse fare.
+L'uso di cicli di sviluppo \textit{Agile}, ha portato perciò ad una maggiore precisione.
+\subsubsection{Andamento}
+Il lato negativo dell'utilizzo di cicli brevi, è stato l'andamento altalenante delle attività: si alternavano giornate intere di \textit{video conference} in cui il team si confrontava sui requisiti da soddisfare, a rapide progettazioni e implementazioni. Penso che una parte delle responsabilità sia da identificare nelle difficoltà conferibili allo \textit{smart working}: a mio parere, l'attività di analisi e quella di progettazione, sono leggermente ostacolate dal distanziamento sociale per natura: disegni a mano libera su una lavagna, grafici, \textit{mock-up}, e altri strumenti visivi rendono infatti molto di più se mostrati di persona, abbinati anche al linguaggio del corpo che inconsapevolmente usiamo. Non sono state infrequenti all'interno del gruppo, infatti, delle incomprensioni che, lavorando in presenza, sarebbero state evitate con rapide domande di chiarimento. Durante le giornate di lavoro in presenza, ho notato una maggiore produttività e anche maggior sincronia con il resto del \textit{team}.
+\newpage
+%**************************************************************
+\section{Analisi di profitto}
+\subsection{Conoscere un nuovo ambito}
+Per precedenti esperienze lavorative, avevo già dimestichezza con i \acrshort{kpi} ma solamente come utente: durante il lavoro, ne sfruttavo infatti il valore informativo.
 
-\begin{table}%
-\caption{Tabella del tracciamento dei requisti funzionali}
-\label{tab:requisiti-funzionali}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RFN-1     & L'interfaccia permette di configurare il tipo di sonde del test & UC1 \\
-\hline
-\end{tabularx}
-\end{table}%
+La scoperta dei concetti di \textit{process mining} è stato un grande valore aggiunto per me in quanto ho dovuto impersonificare il ruolo di consulente per capirne le esigenze. Per fare questo, ho dovuto assimilare diversi concetti di amministrazione e gestione di processo e questo è un valore aggiunto per la posizione che un domani vorrei ricoprire nell'azienda che mi assumerà. Quelli alla base del \textit{process mining}, sono infatti concetti che si prestano a qualsiasi realtà aziendale qualora il fattore prestazionale sia incluso nelle proprie mansioni.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{immagini/stock-earnings-pngrepo-com.png}
+    \caption{Profitto  - Fonte: \href{https://www.pngrepo.com/svg/88166/stock-earnings}{PNG Repo}}
+    \label{fig:stonks}
+\end{figure}
+\vspace{45pt}
+%**************************************************************
+\subsection{\textit{Teamworking} informatico}
+Nel corso della mia formazione, ho avuto l'occasione di lavorare in gruppo ma la maggior parte delle volte, questo capitava con amici e conoscenti che hanno, approssimativamente, le mie stesse competenze ed esperienze.
+%**************************************************************
+\subsubsection{Organizzazione}
+Ho apprezzato, dal punto di vista organizzativo, il contributo portato dalla collaborazione: una volta concordato un linguaggio universale, definire gli obiettivi personali che concorrono ad uno condiviso, porta ad ottenere il risultato più velocemente piuttosto che con lo sviluppo individuale.
+Ho notato che, tramite il confronto, compaiono sempre nuove idee e perplessità che non sarebbero emerse analizzando singolarmente gli scenari che si presentano nella vita lavorativa.
+\newpage
+%**************************************************************
+\subsubsection{Ascoltare e comunicare}
+\label{ssec:ascoltareComunicare}
+Il lavorare all'interno di un \textit{team} formato da persone con competenze e specializzazioni differenti è stata un'esperienza molto formante: sapevo sempre a chi dovevo chiedere le informazioni che cercavo e allo stesso tempo venivo interrogato io su strumenti o tecnologie che gli altri componenti non avevano mai utilizzato.
 
-\begin{table}%
-\caption{Tabella del tracciamento dei requisiti qualitativi}
-\label{tab:requisiti-qualitativi}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecuzione dei test e non la generazione di falsi negativi & - \\
-\hline
-\end{tabularx}
-\end{table}%
+Questo è successo specialmente con tecnologie che ho studiato per diletto negli anni e anche per quelle che ho dovuto imparare per svolgere il progetto.
 
-\begin{table}%
-\caption{Tabella del tracciamento dei requisiti di vincolo}
-\label{tab:requisiti-vincolo}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RVO-1    & La libreria per l'esecuzione dei test automatici deve essere riutilizzabile & - \\
-\hline
-\end{tabularx}
-\end{table}%
+La comunicazione è stata fondamentale, però, in un'altra occasione molto importante; all'inizio di ogni ciclo di sviluppo, ho dovuto comunicare al responsabile ciò che volevo raggiungere, come obiettivo, alla fine di quell'arco di tempo: nel far capire qualcosa di impalpabile, come per esempio un carattere che volevo dare all'\acrshort{ux}, la capacità di farsi comprendere ha giocato un ruolo incisivo.
+%**************************************************************
+\subsection{Documentarsi e imparare "in azione"}
+In tutto il mio percorso scolastico, attività di stage compresa, ho sempre cercato di orientare orizzontalmente le competenze per conoscere quante più cose possibili, anche in maniera superficiale, mantenendo così una visione di insieme ampia sui vari impieghi di una tecnologia o di un \textit{framework}.
+Per esempio, durante lo svolgimento di qualche progetto, ho dovuto effettuare vari tentativi per inserire una funzionalità o per risolvere un problema, impiegando un sacco di tempo, per poi scoprire che la soluzione adatta alle mie esigenze esisteva già: se avessi conosciuto bene nel complesso la tecnologia, magari non avrei avuto istantaneamente la capacità di padroneggiare tale funzionalità ma, in seguito ad ulteriore studio, avrei risparmiato tempo e assimilato una nuova informazione "in azione" nel momento del bisogno. Consultare siti di \textit{ticketing} cercando di risolvere i propri problemi con le soluzioni a quelli degli altri, non è un buon metodo di lavoro.
+%**************************************************************
+\subsection{Il mio contributo al team}
+Nonostante abbia imparato tanto dalle persone con cui ho collaborato, ho avuto, come anticipato in \S\ref{ssec:ascoltareComunicare}, l'occasione di portare alcune mie esperienze all'interno del team che perciò posso dire mi siano state utili nello svolgimento dello stage.
+Da utente di sistemi operativi \textit{linux-based}, non sono alieno all'interazione da terminale e alla modifica di \textit{files} di configurazione. Questo perché alle volte è più comodo e veloce effettuare alcune operazioni sfruttando questi due strumenti piuttosto che cercare ciò che si desidera nell'interfaccia grafica. Nella vita lavorativa, sopratutto quando si parla di sviluppo software, la configurazione tramite \textit{file} è un operazione frequente. Quando sono arrivato in reparto, non esistevano né un sistema di integrazione continua e nemmeno un sistema di \textit{deploy automation} che veniva gestita manualmente. La prima cosa che ho fatto è stato confrontarmi per capire a fondo l'architettura dell'ambiente di sviluppo virtuale che veniva impiegata dal \textit{team} per effettuare i test.
+\newpage
+In seguito, assieme al tutor, abbiamo configurato e testato il nuovo ambiente di sviluppo che ha permesso al team, tramite diverse configurazioni personalizzate, di:
+\begin{itemize}
+    \item effettuare il \textit{deployment} sul device virtuale di test in maniera automatizzata;
+    \item testare localmente, sfruttando la stessa containerizzazione di Bipod, ogni nuova funzionalità prima di inviarla al \textit{repository}.
+\end{itemize}
+Altra competenza che mi è stata molto utile in reparto è la capacità di formalizzare. Nel percorso di studi che ho seguito alle superiori e sopratutto durante quello universitario, ho saputo apprezzare come la formalizzazione porti vantaggi durante lo svolgimento del nostro lavoro. Nel periodo di stage, la corretta formalizzazione di ogni aspetto, requisito o funzionalità, ha mostrato a tutti con più chiarezza qual'era la direzione che che desideravo il progetto intraprendesse.
+%**************************************************************
+\section{Conclusione del percorso}
+\subsection{Come prepararsi al lavoro}
+La strada che ho affrontato da studente è stata impervia e piena di sfide che però ho accettato con il giusto spirito.
+Essendo arrivato alla fine di questo percorso, posso dire che il corso di Informatica è ben strutturato. Questa purtroppo, non è condizione sufficiente per sopravvivere nel mondo del lavoro. Dico questo perché, volendo, uno studente può superare tutti gli esami del corso effettuando uno studio mirato, alternando sporadicamente delle esperienze utili a svolgere gli esercizi proposti. La massima espressione delle nostre capacità, invece, la otteniamo implementando, nelle esperienze extra-accademiche, ciò che abbiamo imparato all'università. Perciò sostengo che, per essere preparati al mondo del lavoro, è necessario che lo studente si corredi di alcuni progetti personali, e non, come quelli svolti durante le attività di stage. Questo è tanto più efficace, quanto queste attività siano di interesse dello studente visto che un giorno faranno parte della sua quotidianità da lavoratore.
+%**************************************************************
+\subsection{Un corretto \textit{way of thinking} dello studente di Informatica Unipd}
+Durante la carriera universitaria e non, ho avuto diverse delusioni ma anche diverse soddisfazioni. Ripensando a come siano arrivate queste ultime, posso dare una medaglia alla curiosità.
+Da studente, essere assetato di sapere e non assimilare tutto quello che stai apprendendo per come ti è stato insegnato bensì scoprendo cosa origina tale sapere (che è il senso di imparare a svolgere una dimostrazione formale), è, secondo me, un valore aggiunto che a lungo termine porta i suoi frutti in dinamicità, per essere pronto a tutte le sfide che ti vengono proposte, e velocità di apprendimento.
+%**************************************************************

@@ -18,7 +18,13 @@
 % !TEX TS-program = pdflatex
 % !TEX root = tesi.tex
 % !TEX spellcheck = it-IT
-
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Migliorare l'esperienza utente nell'amministrazione della gestione di processo} \Author{Alessio Bettarello}
+\Language{it-IT}
+\Subject{Tesi di laurea}
+\Keywords{gui \sep dashboard \sep gestione di processi \sep process mining \sep front-end}
+\end{filecontents*}
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
                twoside,                 % impagina per fronte-retro
@@ -26,7 +32,12 @@
                english,                 
                italian,                 
                ]{book}    
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
+\usepackage[utf8]{inputenc}
+\usepackage{colorprofiles}
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
+\usepackage[T1]{fontenc}
 %**************************************************************
 % Importazione package
 %************************************************************** 
@@ -68,7 +79,7 @@
 
 \usepackage{microtype}                  % microtipografia
 
-\usepackage{mparhack,fixltx2e,relsize}  % finezze tipografiche
+\usepackage{mparhack,relsize}  % finezze tipografiche
 
 \usepackage{nameref}                    % visualizza nome dei riferimenti                                      
 
@@ -78,7 +89,7 @@
 
 \usepackage[italian]{varioref}          % riferimenti completi della pagina
 
-\usepackage[dvipsnames]{xcolor}         % colori
+%\usepackage[dvipsnames]{xcolor}         % colori
 
 \usepackage{booktabs}                   % tabelle                                       
 \usepackage{tabularx}                   % tabelle di larghezza prefissata                                    
@@ -100,6 +111,8 @@
                                         % 1. compilare una prima volta tesi.tex;
                                         % 2. eseguire: biber tesi
                                         % 3. compilare ancora tesi.tex.
+                                        \usepackage{float}
+                                        \usepackage{color, colortbl}
 
 \input{tesi-config}                     % file con le impostazioni personali
 
@@ -121,19 +134,15 @@
 %**************************************************************
 \mainmatter
 \input{capitoli/capitolo-1}             % Introduzione
-\input{capitoli/capitolo-2}             % Processi
-\input{capitoli/capitolo-3}             % Kick-Off
-\input{capitoli/capitolo-4}             % Concept Preview
-\input{capitoli/capitolo-5}             % Product Prototype
-\input{capitoli/capitolo-6}             % Product Design Freeze e SOP
-\input{capitoli/capitolo-7}             % Conclusioni
-\appendix                               
-\input{capitoli/capitolo-A}             % Appendice A
+\input{capitoli/capitolo-2}             % Il contesto del process mining
+\input{capitoli/capitolo-3}             % Modalità di svolgimento dello stage
+\input{capitoli/capitolo-4}             % Indici di prestazione dello stage
 
 %**************************************************************
 % Materiale finale
 %**************************************************************
 \backmatter
-\printglossaries
+\printglossary[type=acronym, title={Acronimi}]
+\printglossary[type=main,title={Glossario}]
 \input{inizio-fine/bibliografia}
 \end{document}

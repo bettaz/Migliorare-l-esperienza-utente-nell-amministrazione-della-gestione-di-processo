@@ -4,29 +4,279 @@
 %**************************************************************
 \renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
-\newacronym[description={\glslink{apig}{Application Program Interface}}]
-    {api}{API}{Application Program Interface}
+\newacronym[description={\glslink{RnDg}{Research and Development}}]
+    {rnd}{RND}{Research and development}
 
-\newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
-    {uml}{UML}{Unified Modeling Language}
+\newacronym[description={\glslink{awsg}{Amazon Web Services}}]{aws}{AWS}{Amazon Web Services}
 
+\newacronym[description={Machine Learning - Apprendimento automatico}]{ml}{ML}{Machine Learning}
+
+\newacronym[description={\glslink{vpng}{Virtual Private Network}}]{vpn}{VPN}{Virtual Private Network}
+\newacronym[description={\glslink{kpig}{Key Performance Indicator}}]{kpi}{KPI}{Key Performance Indicator}
+\newacronym[description={\glslink{jvmg}{Java Virtual Machine}}]{jvm}{JVM}{Java Virtual Machine}
+\newacronym[description={\glslink{uxg}{User Experience}}]{ux}{UX}{User Eperience}
+\newacronym[description={\glslink{apig}{Application programming interface}}]{api}{API}{Application Programming Interface}
+\newacronym[description={\glslink{ideg}{Integrated Development Environment}}]{ide}{IDE}{Integrated Development Environment}
+\newacronym[description={\glslink{pocg}{Proof Of Concept}}]{poc}{ POC}{Proof Of Concept}
+\newacronym[description={\glslink{cig}{Continuous Integration}}]{ci}{CI}{Continuous Integration}
+\newacronym[description={\glslink{restg}{REpresentational State Transfer}}]{rest}{REST}{REpresentational State Transfer}
+\newacronym[description={\glslink{xmlg}{eXteded Mark-up Language}}]{xml}{XML}{eXtended Mark-up Language}
+\newacronym[description={K Desktop Environment}]{kde}{KDE}{K Desktop Environment}
+\newacronym[description={\glslink{xliffg}{\acrshort{xml} Localization Interchange File Format}}]{xliff}{XLIFF}{\acrshort{xml} Localization Interchange File Format}
+\newacronym[description={\glslink{jsong}{JavaScript Object Notation}}]{json}{JSON}{Javascript Object Notation}
+\newacronym[description={\glslink{httpg}{HyperText Transfer Protocol}}]{http}{HTTP}{HyperText Transfer Protocol}
+\newacronym[description={\glslink{dbmsg}{DataBase Management System}}]{dbms}{DBMS}{Database Management System}
 %**************************************************************
 % Glossario
 %**************************************************************
-%\renewcommand{\glossaryname}{Glossario}
+\renewcommand{\glossaryname}{Glossario}
 
-\newglossaryentry{apig}
+\newglossaryentry{RnDg}
 {
-    name=\glslink{api}{API},
-    text=Application Program Interface,
-    sort=api,
-    description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
+    name=\glslink{rnd}{R\&D},
+    text=Research and development
+    sort=red,
+    description={
+        Per \acrfull{rnd} si intende il reparto "Ricerca e Sviluppo" ovvero quello che si occupa di effettuare ricerca per portare innovazione nei prodotti o nei processi aziendali
+    }
 }
 
-\newglossaryentry{umlg}
+\newglossaryentry{scrum}
 {
-    name=\glslink{uml}{UML},
-    text=UML,
-    sort=uml,
-    description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
+    name=Scrum,
+    text=Scrum,
+    sort=scrum,
+    description={
+        Scrum è un framework di metodologie \textit{Agile} nato per fornire un metodo di organizzazione dei progetti\footcite{sommerville:IngegneriaDelSoftware}
+    }
+}
+
+\newglossaryentry{trello}{
+    name=Trello,
+    text=Trello,
+    sort=trello,
+    description={
+        Trello è uno strumento visivo che permette di gestire flessibilmente i progetti\footcite{site:trello}
+    }
+}
+
+\newglossaryentry{evernote}{
+    name=Evernote,
+    text=Evernote,
+    sort=evernote,
+    description={
+        Evernote è uno strumento di scrittura collaborativa basato sull'uso di taccuini contenenti note di ogni genere
+    }
+}
+
+\newglossaryentry{sagemaker}{
+    name=SageMaker,
+    text=SageMaker,
+    sort=sagemaker,
+    description={
+        SageMaker è un servizio \acrshort{aws} che permette la gestione completa del \textit{lifecycle} di modelli di \acrlong{ml}
+    }
+}
+
+\newglossaryentry{awsg}{
+    name=\acrshort{aws},
+    text=AWS,
+    sort=amazon web services,
+    description={
+        Amazon Web Services è un'azienda di proprietà del gruppo Amazon che fornisce servizi di \textit{cloud computing}
+    }
+}
+
+\newglossaryentry{gitlab}{
+    name=GitLab,
+    text=GitLab,
+    sort=gitlab,
+    description={
+        GitLab è un servizio di versionamento Git che comprente anche un \textit{tool} di ticketing al suo interno
+    }
+}
+\newglossaryentry{vpng}{
+    name=\acrshort{vpn},
+    text=VPN,
+    sort=virtual private network,
+    description={
+        Una VPN è una rete di comunicazione privata che sfrutta un protocollo di trasmissione pubblico per effettuare la comunicazione. Viene spesso impiegata per accedere alla \textit{intranet} aziendale da posizione remote
+    }
+}
+
+\newglossaryentry{kpig}{
+    name=\acrshort{kpi},
+    text=KPI,
+    sort=key performance indicator,
+    description={
+        I Key Performance Indicator sono degli indici di prestazione. Essi servono a evidenziare l'andamento di una particolare caratteristica di un processo aziendale
+    }
+}
+
+\newglossaryentry{jvmg}{
+    name=\acrshort{jvm},
+    text=JVM,
+    sort=java virtual machine,
+    description={
+        La java virtual machine è una parte della \textit{runtime} Java che si occupa di eseguire i programmi compilati come bytecode in pacchetti
+    }
+}
+
+\newglossaryentry{uxg}{
+    name=\acrshort{ux},
+    text=UX,
+    sort=user experience,
+    description={
+        La User Experience rappresenta tutte le interazioni e rapporti che un utente ha con un prodotto
+    }
+}
+\newglossaryentry{apig}{
+    name=\acrshort{api},
+    text=API,
+    sort=application programming interface,
+    description={
+        in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione
+        }
+}
+\newglossaryentry{fork}{
+    name=Fork,
+    text=fork,
+    sort=fork,
+    description={
+        Nell'ambito della gestione delle versioni, una \textit{fork} è un operazione di biforcazione che porta ad originare un nuovo \textit{repository} a partire da una specifica versione di un software
+    }
+}
+\newglossaryentry{ideg}{
+    name=\acrshort{ide},
+    text=IDE,
+    sort=integrated development environment,
+    description={
+        Un ambiente di sviluppo integrato è un software che facilita e potenzia la modifica di \textit{file} di codice sorgente tramite strumenti e componenti aggiuntive configurabili
+    }
+}
+\newglossaryentry{pocg}{
+    name=\acrshort{poc},
+    text=POC,
+    sort=proof of concept,
+    description={
+        Un proof of concept è uno strumento dimostrativo della fattibilità di una funzionalità che deve ancora essere sviluppata
+    }
+}
+\newglossaryentry{jsdoc}{
+    name=JSDoc,
+    text=JSDoc,
+    sort=javascript docstring,
+    description={
+        \'E uno standard per la stesura di documentazione di codice sorgente JavaScript che facilita la successiva creazione automatica di documentazione di riferimento
+    }
+}
+\newglossaryentry{markdown}{
+    name=Markdown,
+    text=Markdown,
+    sort=markdown,
+    description={
+        Il linguaggio markdown è un linguaggio di formattazione dei testi che fa della semplicità la sua forza
+    }
+}
+\newglossaryentry{diff}{
+    name=Diff,
+    text=diff,
+    sort=diff,
+    description={
+        \'E un comando git che permette di controllare quali righe di un file sono cambiate fra una versione e un'altra
+    }
+}
+\newglossaryentry{cig}{
+    name=\acrshort{ci},
+    text=CI,
+    sort=continuous integration,
+    description={
+        La continunous integration è una tecnica di sviluppo della disciplina \textit{extreme programming}. Prevede l'inoltro frequente delle modifiche software effettuate sul \textit{repository} condiviso qualora esse siano valide
+    }
+}
+\newglossaryentry{restg}{
+    name=\acrshort{rest},
+    text=Representational State Transfer,
+    sort=representational state transfer,
+    description={
+        REpresentational State Transfer è uno stile architetturale atto ad eliminare lo stato nelle comunicazioni HTTP
+    }
+}
+\newglossaryentry{xmlg}{
+    name=\acrshort{xml},
+    text=eXtended Mark-up Language,
+    sort=extended markup language,
+    description={
+        XML è un metalinguaggio di definizone di modelli di markup
+    }
+}
+\newglossaryentry{discover}{
+    name=Discover,
+    text=Discover,
+    sort=discover,
+    description=Discover è il software \textit{manager} di \acrshort{kde}
+}
+\newglossaryentry{xliffg}{
+    name=\acrshort{xliff},
+    text=XLIFF,
+    sort=xml localization interchange file format,
+    description={
+        XLIFF è un formato \acrshort{xml} per la definizione di traduzioni. Contiene una località di origine e una di destinazione. Inoltre contiene una lista di termini nella lingua della località di origine con la corrispettiva traduzione
+    }
+}
+\newglossaryentry{office}{
+    name=Office 365,
+    text=Office 365,
+    sort=office 365,
+    description={
+        Office 365 è la suite di tools di Office Automation in \textit{cloud} sviluppata da Microsoft
+    }
+}
+\newglossaryentry{gradle}{
+    name=Gradle,
+    text=Gradle,
+    sort=gradle,
+    description={
+        Gradle è un tool di \textit{build automation}
+    }
+}
+\newglossaryentry{solid}{
+    name=SOLID Principles,
+    text=SOLID,
+    sort=solid,
+    description={
+        L'acronimo rappresenta i principi descritti da Robert Martin per la programmazione ad oggetti: singola responsabilità, apertura all'estensione e chiusura alle modifiche, principio di sostituzione di Liskov, segregazione delle interfacce, inversione delle dipendenze
+    }
+}
+\newglossaryentry{jsong}{
+    name=JSON,
+    text=JSON,
+    sort=json,
+    description={
+        \'E un formato dati di tipo dizionario utile alla rappresentazione su \textit{filesystem} di oggetti JavaScript
+    }
+}
+\newglossaryentry{httpg}{
+    name=HTTP,
+    text=HTTP,
+    sort=hypertext transfer protocol,
+    description={
+        HTTP è un protocollo di comunicazione ideato per il trasferimento di ipertesti
+    }
+}
+\newglossaryentry{dbmsg}{
+    name=DBMS,
+    text=DBMS,
+    sort=database management system,
+    description={
+        \'E un software che permette di gestire una basi di dati che isola lo stato fisico della memorizzazione fornendo dei metodi per accedere alla stessa.
+    }
+}
+\newglossaryentry{commit}{
+    name=commit,
+    text=commit,
+    sort=commit,
+    description={
+        Un commit è la registrazione di una versione software in un \textit{repository}. Identificato da un codice esadecimale univoco, può essere accompagnato da un messaggio che identifichi le novità che quella versione porta all'archivio
+    }
 }
